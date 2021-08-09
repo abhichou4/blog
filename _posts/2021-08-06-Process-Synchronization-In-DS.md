@@ -26,7 +26,7 @@ These involves changing making changes to the hardware environment the threads a
 
 #### TestAndSet
 
-Although not truly a hardware solution, TestAndSet keeps track of a variable `lock`. Before entering the critical section, the process checks if the
+Although not truly a hardware solution, TestAndSet keeps track of a `lock` variable. Before entering the critical section, the process checks if the
 section is locked. If not locked, it proceeds, else, it waits.
 
 As you can imagine, this satisfies mutual exclusion and progress, but isn't bounded. The resources can be locked for a long long time. If the are
@@ -92,7 +92,7 @@ while (true) {
 
 #### Limitations of Turn Method
 
-This is both mutually exclusive and ensures progress. But an edge-case would be, if the processes context switch at line `wantsToEnter[i] = true;`
+This is both mutually exclusive and ensures progress. But an edge-case would be, if the processes context switch at line `wantsToEnter[i] = true`
 both the process will be marked interested in entering. This will cause a deadlock.
 
 #### Peterson's Algorithm
