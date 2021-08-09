@@ -137,7 +137,7 @@ cannot be postponed indefinitely.</li>
 <h4 id="testandset">
 <a class="anchor" href="#testandset" aria-hidden="true"><span class="octicon octicon-link"></span></a>TestAndSet</h4>
 
-<p>Although not truly a hardware solution, TestAndSet keeps track of a variable <code class="language-plaintext highlighter-rouge">lock</code>. Before entering the critical section, the process checks if the
+<p>Although not truly a hardware solution, TestAndSet keeps track of a <code class="language-plaintext highlighter-rouge">lock</code> variable. Before entering the critical section, the process checks if the
 section is locked. If not locked, it proceeds, else, it waits.</p>
 
 <p>As you can imagine, this satisfies mutual exclusion and progress, but isn’t bounded. The resources can be locked for a long long time. If the are
@@ -203,7 +203,7 @@ unlocked preemptively, there’s no saying if the data will be corrupted.</p>
 <h4 id="limitations-of-turn-method">
 <a class="anchor" href="#limitations-of-turn-method" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations of Turn Method</h4>
 
-<p>This is both mutually exclusive and ensures progress. But an edge-case would be, if the processes context switch at line <code class="language-plaintext highlighter-rouge">wantsToEnter[i] = true;</code>
+<p>This is both mutually exclusive and ensures progress. But an edge-case would be, if the processes context switch at line <code class="language-plaintext highlighter-rouge">wantsToEnter[i] = true</code>
 both the process will be marked interested in entering. This will cause a deadlock.</p>
 
 <h4 id="petersons-algorithm">

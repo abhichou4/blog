@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://abhichou4.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhichou4.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-08-09T13:33:44-05:00</updated><id>https://abhichou4.github.io/blog/feed.xml</id><title type="html">Abhineet’s Blog</title><subtitle>Noobmaster</subtitle><entry><title type="html">Process Synchronization</title><link href="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html" rel="alternate" type="text/html" title="Process Synchronization" /><published>2021-08-06T00:00:00-05:00</published><updated>2021-08-06T00:00:00-05:00</updated><id>https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS</id><content type="html" xml:base="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html">&lt;h3 id=&quot;the-critical-section-problem&quot;&gt;The Critical Section Problem&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://abhichou4.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhichou4.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-08-09T13:45:07-05:00</updated><id>https://abhichou4.github.io/blog/feed.xml</id><title type="html">Abhineet’s Blog</title><subtitle>Noobmaster</subtitle><entry><title type="html">Process Synchronization</title><link href="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html" rel="alternate" type="text/html" title="Process Synchronization" /><published>2021-08-06T00:00:00-05:00</published><updated>2021-08-06T00:00:00-05:00</updated><id>https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS</id><content type="html" xml:base="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html">&lt;h3 id=&quot;the-critical-section-problem&quot;&gt;The Critical Section Problem&lt;/h3&gt;
 
 &lt;p&gt;The critical section contain variables shared among different processes. The values of these may change
 depending on the order in which in is accessed by various processes. This can result in corruption of data. Thus, only one process should
@@ -21,7 +21,7 @@ cannot be postponed indefinitely.&lt;/li&gt;
 
 &lt;h4 id=&quot;testandset&quot;&gt;TestAndSet&lt;/h4&gt;
 
-&lt;p&gt;Although not truly a hardware solution, TestAndSet keeps track of a variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lock&lt;/code&gt;. Before entering the critical section, the process checks if the
+&lt;p&gt;Although not truly a hardware solution, TestAndSet keeps track of a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lock&lt;/code&gt; variable. Before entering the critical section, the process checks if the
 section is locked. If not locked, it proceeds, else, it waits.&lt;/p&gt;
 
 &lt;p&gt;As you can imagine, this satisfies mutual exclusion and progress, but isn’t bounded. The resources can be locked for a long long time. If the are
@@ -83,7 +83,7 @@ unlocked preemptively, there’s no saying if the data will be corrupted.&lt;/p&
 
 &lt;h4 id=&quot;limitations-of-turn-method&quot;&gt;Limitations of Turn Method&lt;/h4&gt;
 
-&lt;p&gt;This is both mutually exclusive and ensures progress. But an edge-case would be, if the processes context switch at line &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wantsToEnter[i] = true;&lt;/code&gt;
+&lt;p&gt;This is both mutually exclusive and ensures progress. But an edge-case would be, if the processes context switch at line &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wantsToEnter[i] = true&lt;/code&gt;
 both the process will be marked interested in entering. This will cause a deadlock.&lt;/p&gt;
 
 &lt;h4 id=&quot;petersons-algorithm&quot;&gt;Peterson’s Algorithm&lt;/h4&gt;
