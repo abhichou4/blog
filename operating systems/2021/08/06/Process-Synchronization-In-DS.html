@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Process Synchronization | Abhineet’s Blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Process Synchronization" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An introduction to process synchronization" />
+<meta property="og:description" content="An introduction to process synchronization" />
+<link rel="canonical" href="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html" />
+<meta property="og:url" content="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html" />
+<meta property="og:site_name" content="Abhineet’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-06T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"An introduction to process synchronization","url":"https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html"},"headline":"Process Synchronization","dateModified":"2021-08-06T00:00:00-05:00","datePublished":"2021-08-06T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://abhichou4.github.io/blog/feed.xml" title="Abhineet's Blog" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Abhineet&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Process Synchronization</h1><p class="page-description">An introduction to process synchronization</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-08-06T00:00:00-05:00" itemprop="datePublished">
+        Aug 6, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#Operating Systems">Operating Systems</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h3"><a href="#the-critical-section-problem">The Critical Section Problem</a></li>
+<li class="toc-entry toc-h3"><a href="#hardware-solutions">Hardware Solutions</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#testandset">TestAndSet</a></li>
+<li class="toc-entry toc-h4"><a href="#disable-interrupts">Disable Interrupts</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#software-solutions">Software Solutions</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#turn-method">Turn Method</a></li>
+<li class="toc-entry toc-h4"><a href="#limitations-of-turn-method">Limitations of Turn Method</a></li>
+<li class="toc-entry toc-h4"><a href="#petersons-algorithm">Peterson’s Algorithm</a></li>
+<li class="toc-entry toc-h4"><a href="#limitations-of-petersons-algorithm">Limitations of Peterson’s Algorithm</a></li>
+<li class="toc-entry toc-h4"><a href="#semaphores">Semaphores</a></li>
+<li class="toc-entry toc-h4"><a href="#limitations-of-semaphore">Limitations of Semaphore</a></li>
+</ul>
+</li>
+</ul><h3 id="the-critical-section-problem">
+<a class="anchor" href="#the-critical-section-problem" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Critical Section Problem</h3>
+
+<p>The critical section contain variables shared among different processes. The values of these may change
+depending on the order in which in is accessed by various processes. This can result in corruption of data. Thus, only one process should
+be allowed to enter the critical section at a time.</p>
+
+<p>The solutions to this critical section problem need to satisfy the following three conditions:</p>
+
+<ol>
+  <li>Mutual Exclusion: Only one process enters the critical section at a time.</li>
+  <li>Progress: If no processes are executing in the critical section, and there are other processes waiting, the selection of the next process
+cannot be postponed indefinitely.</li>
+  <li>Bounded Waiting: There must be a bound on the number of processes that are allowed to go in the critical section (maybe because of higher priority) before a process that has requested to enter the critical section. This is to ensure there is no starvation.</li>
+</ol>
+
+<p>In this post, we talk about methods used in synchronization of threads utilizing different cores in the same CPU. Process synchronization in distributed system uses the same underlying principles, but is a little different. That’s for another post.</p>
+
+<h3 id="hardware-solutions">
+<a class="anchor" href="#hardware-solutions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hardware Solutions</h3>
+
+<p>These involves changing making changes to the hardware environment the threads are running in. After this eases the burden of the programmer to some extent.</p>
+
+<h4 id="testandset">
+<a class="anchor" href="#testandset" aria-hidden="true"><span class="octicon octicon-link"></span></a>TestAndSet</h4>
+
+<p>Although not truly a hardware solution, TestAndSet keeps track of a variable <code class="language-plaintext highlighter-rouge">lock</code>. Before entering the critical section, the process checks if the
+section is locked. If not locked, it proceeds, else, it waits.</p>
+
+<p>As you can imagine, this satisfies mutual exclusion and progress, but isn’t bounded. The resources can be locked for a long long time. If the are
+unlocked preemptively, there’s no saying if the data will be corrupted.</p>
+
+<h4 id="disable-interrupts">
+<a class="anchor" href="#disable-interrupts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disable Interrupts</h4>
+
+<p>In uni-processor systems, A naive approach is to just disable interrupts. Without interrupts, two processes will never enter the critical section. Since the processes are executed in a non-preemptive environment now, it can lead to a host of problems like Convoy Effect, starvation, etc.</p>
+
+<h3 id="software-solutions">
+<a class="anchor" href="#software-solutions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Software Solutions</h3>
+
+<p>In these solutions the programmer handles which process enters the critical section and how the process leaves it.</p>
+
+<h4 id="turn-method">
+<a class="anchor" href="#turn-method" aria-hidden="true"><span class="octicon octicon-link"></span></a>Turn Method</h4>
+
+<p>Just have a turn variable that specifies which process should enter the critical section, looping over all processes.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// code of process 0</span>
+<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
+    <span class="n">turn</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// code of process 1</span>
+<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
+    <span class="n">turn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This ensures mutual exclusion, but not progress, as there is no rule that takes in account waiting processes to be selected immediately.</p>
+
+<p>How about a boolean to know which process wants to enter the critical section?</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// code of process 0</span>
+<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
+    <span class="n">wantesToEnter</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// code of process 1</span>
+<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
+    <span class="n">wantesToEnter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="limitations-of-turn-method">
+<a class="anchor" href="#limitations-of-turn-method" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations of Turn Method</h4>
+
+<p>This is both mutually exclusive and ensures progress. But an edge-case would be, if the processes context switch at line <code class="language-plaintext highlighter-rouge">wantsToEnter[i] = true;</code>
+both the process will be marked interested in entering. This will cause a deadlock.</p>
+
+<h4 id="petersons-algorithm">
+<a class="anchor" href="#petersons-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Peterson’s Algorithm</h4>
+
+<p>Peterson’s solution combines the above two approaches. There are two shared variables:</p>
+
+<ol>
+  <li>
+<code class="language-plaintext highlighter-rouge">bool interestedInEntering[N]</code> where N is the total number of processes.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">int turn</code> where turn is the process selected to enter.</li>
+</ol>
+
+<p>Here’s the pseudo-code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// code of process 0</span>
+<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">turn</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
+    <span class="n">turn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// code of process 1</span>
+<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">turn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
+    <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="limitations-of-petersons-algorithm">
+<a class="anchor" href="#limitations-of-petersons-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations of Peterson’s Algorithm</h4>
+
+<p>This solution satisfies all three above mentioned properties, but it can’t scale to more than two processes since branching will need to be added
+for each process.</p>
+
+<h4 id="semaphores">
+<a class="anchor" href="#semaphores" aria-hidden="true"><span class="octicon octicon-link"></span></a>Semaphores</h4>
+
+<p>Semaphores was proposed by Dijkstra in 1965. It is a variable shared between threads governing which process will enter the critical condition.
+Semaphores can be of two types. These are implemented primarily using two atomic functions. A sleep/wait function, and a wake-up/signal function. The wait functions makes new processes wait, and push them to a process queue. Signal function process dequeue waiting processes, signaling them.</p>
+
+<p>An operation in called atomic if it executes as a single step relative to other threads. This is easier said than done (for example, a single 64-bit assignment when compiled using 32-bit executes as two instructions.)</p>
+
+<ol>
+  <li>
+    <p>Binary Semaphore (Mutex lock) - It’s a lock that we put on the shared resource before using it, and release the lock after using it. No other thread can access
+the resource when the lock is set.</p>
+  </li>
+  <li>
+    <p>Counting Semaphores - These locks can take a range of values and as you an imagine, are used to put lock on resources with multiple instances.</p>
+  </li>
+</ol>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">semaphore</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">value</span><span class="p">;</span> <span class="c1">// n is the number of instances of the resource</span>
+    <span class="c1">// q contains all Process Control Blocks (PCBs)</span>
+    <span class="c1">// corresponding to processes got blocked</span>
+    <span class="c1">// while performing down operation.</span>
+    <span class="n">Queue</span><span class="o">&lt;</span><span class="n">process</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+ 
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Wait</span><span class="p">(</span><span class="n">semaphore</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// here p is a process which is currently executing</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+        <span class="n">block</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+        <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Signal</span><span class="p">(</span><span class="n">semaphore</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// remove process p from queue</span>
+        <span class="n">Process</span> <span class="n">p</span><span class="o">=</span><span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">wakeup</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+        <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">struct</span> <span class="n">semaphore</span> <span class="n">s</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Wait</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
+    <span class="n">Signal</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="limitations-of-semaphore">
+<a class="anchor" href="#limitations-of-semaphore" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations of Semaphore</h4>
+
+<ol>
+  <li>Priority inversion: This should be handled with passing the processes in a priority queue, but that leads to unbounded waiting and in turn doesn’t satisfy the critical section
+problem.</li>
+  <li>Deadlock: Deadlock can occur when a process, after finishing it’s critical section execution, is trying to wake up a another process which isn’t asleep.</li>
+  <li>Busy waiting: The condition <code class="language-plaintext highlighter-rouge">while (s.value == 0);</code> is pooled repeatedly. The process is not doing anything useful in this time.</li>
+</ol>
+
+<p>Note: This information can be found of other CS portals. This is a half-assed post I intend to come back to later with some insights.</p>
+
+  </div><a class="u-url" href="/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Noobmaster</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/abhichou4" title="abhichou4"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/abhichou4" title="abhichou4"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
