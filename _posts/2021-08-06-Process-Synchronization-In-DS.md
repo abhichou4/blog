@@ -24,15 +24,15 @@ In this post, we talk about methods used in synchronization of threads utilizing
 
 These involves changing making changes to the hardware environment the threads are running in. After this eases the burden of the programmer to some extent.
 
-#### TestAndSet
+#### 1. TestAndSet
 
-Although not truly a hardware solution, TestAndSet keeps track of a `lock` variable. Before entering the critical section, the process checks if the
+Although not truly a hardware solution, TestAndSet keeps track of a lock variable. Before entering the critical section, the process checks if the
 section is locked. If not locked, it proceeds, else, it waits.
 
 As you can imagine, this satisfies mutual exclusion and progress, but isn't bounded. The resources can be locked for a long long time. If the are
 unlocked preemptively, there's no saying if the data will be corrupted.
 
-#### Disable Interrupts
+#### 2. Disable Interrupts
 
 In uni-processor systems, A naive approach is to just disable interrupts. Without interrupts, two processes will never enter the critical section. Since the processes are executed in a non-preemptive environment now, it can lead to a host of problems like Convoy Effect, starvation, etc.
 
@@ -40,11 +40,11 @@ In uni-processor systems, A naive approach is to just disable interrupts. Withou
 
 In these solutions the programmer handles which process enters the critical section and how the process leaves it.
 
-#### Turn Method
+#### 1. Turn Method
 
 Just have a turn variable that specifies which process should enter the critical section, looping over all processes.
 
-```c
+```
 // code of process 0
 while (true) {
     while (turn != 0);
@@ -54,7 +54,7 @@ while (true) {
 }
 ```
 
-```c
+```
 // code of process 1
 while (true) {
     while (turn != 1);
@@ -68,7 +68,7 @@ This ensures mutual exclusion, but not progress, as there is no rule that takes 
 
 How about a boolean to know which process wants to enter the critical section?
 
-```c
+```
 // code of process 0
 while (true) {
     wantsToEnter[0] = true;
@@ -79,7 +79,7 @@ while (true) {
 }
 ```
 
-```c
+```
 // code of process 1
 while (true) {
     wantsToEnter[1] = true;
@@ -90,12 +90,12 @@ while (true) {
 }
 ```
 
-#### Limitations of Turn Method
+##### Limitations of Turn Method
 
-This is both mutually exclusive and ensures progress. But an edge-case would be, if the processes context switch at line `wantsToEnter[i] = true`
+This is both mutually exclusive and ensures progress. But if the processes context switch at the same time, 
 both the process will be marked interested in entering. This will cause a deadlock.
 
-#### Peterson's Algorithm
+#### 2. Peterson's Algorithm
 
 Peterson's solution combines the above two approaches. There are two shared variables:
 
@@ -104,7 +104,7 @@ Peterson's solution combines the above two approaches. There are two shared vari
 
 Here's the pseudo-code:
 
-```c
+```
 // code of process 0
 while (true) {
     wantsToEnter[0] = true;
@@ -117,7 +117,7 @@ while (true) {
 }
 ```
 
-```c
+```
 // code of process 1
 while (true) {
     wantsToEnter[1] = true;
@@ -129,12 +129,12 @@ while (true) {
 }
 ```
 
-#### Limitations of Peterson's Algorithm
+##### Limitations of Peterson's Algorithm
 
 This solution satisfies all three above mentioned properties, but it can't scale to more than two processes since branching will need to be added
 for each process.
 
-#### Semaphores
+#### 3. Semaphores
 
 Semaphores was proposed by Dijkstra in 1965. It is a variable shared between threads governing which process will enter the critical condition.
 Semaphores can be of two types. These are implemented primarily using two atomic functions. A sleep/wait function, and a wake-up/signal function. The wait functions makes new processes wait, and push them to a process queue. Signal function process dequeue waiting processes, signaling them.
@@ -146,7 +146,7 @@ the resource when the lock is set.
 
 2. Counting Semaphores - These locks can take a range of values and as you an imagine, are used to put lock on resources with multiple instances.
 
-```c
+```
 struct semaphore {
     int value; // n is the number of instances of the resource
     // q contains all Process Control Blocks (PCBs)
@@ -163,8 +163,6 @@ void Wait(semaphore s) {
         q.push(p);
         block();
     }
-    else
-        return;
 }
 
 void Signal(semaphore s) {
@@ -174,8 +172,6 @@ void Signal(semaphore s) {
         Process p=q.pop();
         wakeup(p);
     }
-    else
-        return;
 }
 
 struct semaphore s;
@@ -187,7 +183,7 @@ while (true) {
 }
 ```
 
-#### Limitations of Semaphore
+##### Limitations of Semaphore
 
 1. Priority inversion: This should be handled with passing the processes in a priority queue, but that leads to unbounded waiting and in turn doesn't satisfy the critical section
 problem.
