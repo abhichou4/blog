@@ -97,18 +97,27 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#the-critical-section-problem">The Critical Section Problem</a></li>
 <li class="toc-entry toc-h3"><a href="#hardware-solutions">Hardware Solutions</a>
 <ul>
-<li class="toc-entry toc-h4"><a href="#testandset">TestAndSet</a></li>
-<li class="toc-entry toc-h4"><a href="#disable-interrupts">Disable Interrupts</a></li>
+<li class="toc-entry toc-h4"><a href="#1-testandset">1. TestAndSet</a></li>
+<li class="toc-entry toc-h4"><a href="#2-disable-interrupts">2. Disable Interrupts</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h3"><a href="#software-solutions">Software Solutions</a>
 <ul>
-<li class="toc-entry toc-h4"><a href="#turn-method">Turn Method</a></li>
-<li class="toc-entry toc-h4"><a href="#limitations-of-turn-method">Limitations of Turn Method</a></li>
-<li class="toc-entry toc-h4"><a href="#petersons-algorithm">Peterson’s Algorithm</a></li>
-<li class="toc-entry toc-h4"><a href="#limitations-of-petersons-algorithm">Limitations of Peterson’s Algorithm</a></li>
-<li class="toc-entry toc-h4"><a href="#semaphores">Semaphores</a></li>
-<li class="toc-entry toc-h4"><a href="#limitations-of-semaphore">Limitations of Semaphore</a></li>
+<li class="toc-entry toc-h4"><a href="#1-turn-method">1. Turn Method</a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#limitations-of-turn-method">Limitations of Turn Method</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h4"><a href="#2-petersons-algorithm">2. Peterson’s Algorithm</a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#limitations-of-petersons-algorithm">Limitations of Peterson’s Algorithm</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h4"><a href="#3-semaphores">3. Semaphores</a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#limitations-of-semaphore">Limitations of Semaphore</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul><h3 id="the-critical-section-problem">
@@ -134,17 +143,17 @@ cannot be postponed indefinitely.</li>
 
 <p>These involves changing making changes to the hardware environment the threads are running in. After this eases the burden of the programmer to some extent.</p>
 
-<h4 id="testandset">
-<a class="anchor" href="#testandset" aria-hidden="true"><span class="octicon octicon-link"></span></a>TestAndSet</h4>
+<h4 id="1-testandset">
+<a class="anchor" href="#1-testandset" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. TestAndSet</h4>
 
-<p>Although not truly a hardware solution, TestAndSet keeps track of a <code class="language-plaintext highlighter-rouge">lock</code> variable. Before entering the critical section, the process checks if the
+<p>Although not truly a hardware solution, TestAndSet keeps track of a lock variable. Before entering the critical section, the process checks if the
 section is locked. If not locked, it proceeds, else, it waits.</p>
 
 <p>As you can imagine, this satisfies mutual exclusion and progress, but isn’t bounded. The resources can be locked for a long long time. If the are
 unlocked preemptively, there’s no saying if the data will be corrupted.</p>
 
-<h4 id="disable-interrupts">
-<a class="anchor" href="#disable-interrupts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disable Interrupts</h4>
+<h4 id="2-disable-interrupts">
+<a class="anchor" href="#2-disable-interrupts" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Disable Interrupts</h4>
 
 <p>In uni-processor systems, A naive approach is to just disable interrupts. Without interrupts, two processes will never enter the critical section. Since the processes are executed in a non-preemptive environment now, it can lead to a host of problems like Convoy Effect, starvation, etc.</p>
 
@@ -153,61 +162,61 @@ unlocked preemptively, there’s no saying if the data will be corrupted.</p>
 
 <p>In these solutions the programmer handles which process enters the critical section and how the process leaves it.</p>
 
-<h4 id="turn-method">
-<a class="anchor" href="#turn-method" aria-hidden="true"><span class="octicon octicon-link"></span></a>Turn Method</h4>
+<h4 id="1-turn-method">
+<a class="anchor" href="#1-turn-method" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Turn Method</h4>
 
 <p>Just have a turn variable that specifies which process should enter the critical section, looping over all processes.</p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// code of process 0</span>
-<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
-    <span class="n">turn</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// code of process 0
+while (true) {
+    while (turn != 0);
+    [CRITICAL SECTION]
+    turn = 1;
+    [EXIT SECTION]
+}
 </code></pre></div></div>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// code of process 1</span>
-<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
-    <span class="n">turn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// code of process 1
+while (true) {
+    while (turn != 1);
+    [CRITICAL SECTION]
+    turn = 0;
+    [EXIT SECTION]
+}
 </code></pre></div></div>
 
 <p>This ensures mutual exclusion, but not progress, as there is no rule that takes in account waiting processes to be selected immediately.</p>
 
 <p>How about a boolean to know which process wants to enter the critical section?</p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// code of process 0</span>
-<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
-    <span class="n">wantesToEnter</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// code of process 0
+while (true) {
+    wantsToEnter[0] = true;
+    while (wantsToEnter[1] != 0);
+    [CRITICAL SECTION]
+    wantesToEnter[0] = false;
+    [EXIT SECTION]
+}
 </code></pre></div></div>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// code of process 1</span>
-<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
-    <span class="n">wantesToEnter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// code of process 1
+while (true) {
+    wantsToEnter[1] = true;
+    while (wantsToEnter[0]);
+    [CRITICAL SECTION]
+    wantesToEnter[1] = false;
+    [EXIT SECTION]
+}
 </code></pre></div></div>
 
-<h4 id="limitations-of-turn-method">
-<a class="anchor" href="#limitations-of-turn-method" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations of Turn Method</h4>
+<h5 id="limitations-of-turn-method">
+<a class="anchor" href="#limitations-of-turn-method" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations of Turn Method</h5>
 
-<p>This is both mutually exclusive and ensures progress. But an edge-case would be, if the processes context switch at line <code class="language-plaintext highlighter-rouge">wantsToEnter[i] = true</code>
+<p>This is both mutually exclusive and ensures progress. But if the processes context switch at the same time, 
 both the process will be marked interested in entering. This will cause a deadlock.</p>
 
-<h4 id="petersons-algorithm">
-<a class="anchor" href="#petersons-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Peterson’s Algorithm</h4>
+<h4 id="2-petersons-algorithm">
+<a class="anchor" href="#2-petersons-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Peterson’s Algorithm</h4>
 
 <p>Peterson’s solution combines the above two approaches. There are two shared variables:</p>
 
@@ -220,37 +229,37 @@ both the process will be marked interested in entering. This will cause a deadlo
 
 <p>Here’s the pseudo-code:</p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// code of process 0</span>
-<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-    <span class="n">turn</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
-    <span class="n">turn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// code of process 0
+while (true) {
+    wantsToEnter[0] = true;
+    turn = 1;
+    while (turn == 1 &amp;&amp; wantsToEnter[1]);
+    [CRITICAL SECTION]
+    turn = 0;
+    wantsToEnter[0] = false;
+    [EXIT SECTION]
+}
 </code></pre></div></div>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// code of process 1</span>
-<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-    <span class="n">turn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
-    <span class="n">wantsToEnter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// code of process 1
+while (true) {
+    wantsToEnter[1] = true;
+    turn = 0;
+    while (turn == 0 &amp;&amp; wantsToEnter[0]);
+    [CRITICAL SECTION]
+    wantsToEnter[1] = false;
+    [EXIT SECTION]
+}
 </code></pre></div></div>
 
-<h4 id="limitations-of-petersons-algorithm">
-<a class="anchor" href="#limitations-of-petersons-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations of Peterson’s Algorithm</h4>
+<h5 id="limitations-of-petersons-algorithm">
+<a class="anchor" href="#limitations-of-petersons-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations of Peterson’s Algorithm</h5>
 
 <p>This solution satisfies all three above mentioned properties, but it can’t scale to more than two processes since branching will need to be added
 for each process.</p>
 
-<h4 id="semaphores">
-<a class="anchor" href="#semaphores" aria-hidden="true"><span class="octicon octicon-link"></span></a>Semaphores</h4>
+<h4 id="3-semaphores">
+<a class="anchor" href="#3-semaphores" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Semaphores</h4>
 
 <p>Semaphores was proposed by Dijkstra in 1965. It is a variable shared between threads governing which process will enter the critical condition.
 Semaphores can be of two types. These are implemented primarily using two atomic functions. A sleep/wait function, and a wake-up/signal function. The wait functions makes new processes wait, and push them to a process queue. Signal function process dequeue waiting processes, signaling them.</p>
@@ -267,48 +276,44 @@ the resource when the lock is set.</p>
   </li>
 </ol>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">semaphore</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">value</span><span class="p">;</span> <span class="c1">// n is the number of instances of the resource</span>
-    <span class="c1">// q contains all Process Control Blocks (PCBs)</span>
-    <span class="c1">// corresponding to processes got blocked</span>
-    <span class="c1">// while performing down operation.</span>
-    <span class="n">Queue</span><span class="o">&lt;</span><span class="n">process</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>struct semaphore {
+    int value; // n is the number of instances of the resource
+    // q contains all Process Control Blocks (PCBs)
+    // corresponding to processes got blocked
+    // while performing down operation.
+    Queue&lt;process&gt; q;
  
-<span class="p">}</span>
+}
 
-<span class="kt">void</span> <span class="nf">Wait</span><span class="p">(</span><span class="n">semaphore</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">s</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// here p is a process which is currently executing</span>
-        <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-        <span class="n">block</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-        <span class="k">return</span><span class="p">;</span>
-<span class="p">}</span>
+void Wait(semaphore s) {
+    s.value = s.value - 1;
+    if (s.value &lt; 0) {
+        // here p is a process which is currently executing
+        q.push(p);
+        block();
+    }
+}
 
-<span class="kt">void</span> <span class="nf">Signal</span><span class="p">(</span><span class="n">semaphore</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">s</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// remove process p from queue</span>
-        <span class="n">Process</span> <span class="n">p</span><span class="o">=</span><span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-        <span class="n">wakeup</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-        <span class="k">return</span><span class="p">;</span>
-<span class="p">}</span>
+void Signal(semaphore s) {
+    s.value = s.value + 1;
+    if (s.value &lt;= 0) {
+        // remove process p from queue
+        Process p=q.pop();
+        wakeup(p);
+    }
+}
 
-<span class="k">struct</span> <span class="n">semaphore</span> <span class="n">s</span><span class="p">;</span>
-<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">Wait</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
-    <span class="p">[</span><span class="n">CRITICAL</span> <span class="n">SECTION</span><span class="p">]</span>
-    <span class="n">Signal</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="p">[</span><span class="n">EXIT</span> <span class="n">SECTION</span><span class="p">]</span>
-<span class="p">}</span>
+struct semaphore s;
+while (true) {
+    Wait(s);
+    [CRITICAL SECTION]
+    Signal(s)
+    [EXIT SECTION]
+}
 </code></pre></div></div>
 
-<h4 id="limitations-of-semaphore">
-<a class="anchor" href="#limitations-of-semaphore" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations of Semaphore</h4>
+<h5 id="limitations-of-semaphore">
+<a class="anchor" href="#limitations-of-semaphore" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations of Semaphore</h5>
 
 <ol>
   <li>Priority inversion: This should be handled with passing the processes in a priority queue, but that leads to unbounded waiting and in turn doesn’t satisfy the critical section
