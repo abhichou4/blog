@@ -4,17 +4,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>About Me | Abhineet’s Blog</title>
+<title>Projects | Abhineet’s Blog</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="About Me" />
+<meta property="og:title" content="Projects" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="NoobMaster" />
 <meta property="og:description" content="NoobMaster" />
-<link rel="canonical" href="https://abhichou4.github.io/blog/about/" />
-<meta property="og:url" content="https://abhichou4.github.io/blog/about/" />
+<link rel="canonical" href="https://abhichou4.github.io/blog/projects/" />
+<meta property="og:url" content="https://abhichou4.github.io/blog/projects/" />
 <meta property="og:site_name" content="Abhineet’s Blog" />
 <script type="application/ld+json">
-{"description":"NoobMaster","url":"https://abhichou4.github.io/blog/about/","@type":"WebSite","headline":"About Me","name":"Abhineet’s Blog","@context":"https://schema.org"}</script>
+{"description":"NoobMaster","url":"https://abhichou4.github.io/blog/projects/","@type":"WebPage","headline":"Projects","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://abhichou4.github.io/blog/feed.xml" title="Abhineet's Blog" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -66,25 +66,55 @@ window.onload = wrap_img;
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
+        <h1 id="-robotics-projects-"><u> Robotics Projects </u></h1>
 
-  <header class="post-header">
-    <h1 class="post-title">About Me</h1>
-  </header>
+<h2 id="eve-a-self-driving-car"><strong>Eve: A self-driving car</strong></h2>
 
-  <div class="post-content">
-    <p>Hi, I’m Abhineet. I’m a final year Computer Science student.</p>
+<p>Eve is an electic vehicle with self-driving capabilities being developed by Project MANAS for the indian roads. The EV finished top 5 in the Mahidra Rise Prize competition, winning 20 lakhs for future developement.</p>
 
-<p><img src="../images/logo.png" style="display: inline-block" /></p>
+<p>I worked on object-detection and tracking, and lane-detection modules of the car in my tenure as Perception Head. It has been one of the most exciting projects I’ve worked on.</p>
 
-<p>I like to use <strong>NoobMaster</strong> as my nom-de-net. Apart from the deceleration “I’m no expert at this”, it reminds me how you can study something for long and know so little about it. That’s precisely the objective of this blog. I’ll visited or re-visit topics from the perspective of a noob, and write about it for my own learning process, but if it helps
-someone out there, great!</p>
+<h2 id="solo-an-autonomous-ground-vehicle"><strong>Solo: An autonomous ground vehicle</strong></h2>
 
-<p>You can find my resume <a href="https://www.linkedin.com/in/abhineet-c-344967bb/">on my linkedin</a>.</p>
+<p><img src="../images/solo-championship.jpg" width="60%" style="margin: 15px;" /></p>
 
-  </div>
+<p>Solo is an autonous ground vehicle built by Project MANAS, capable of navigating courses with static obstacles. It bagged the grand prize at IGVC 2019, held at Oakland University, Michigan.</p>
 
-</article>
+<p>I worked on helping it avoid potholes and mapping model detection to ground frame using images and their corresponding point cloud. I learned a lot working on this project.</p>
+
+<h2 id="fuse-my-senses-odometry-estimation"><strong>Fuse My Senses: Odometry estimation</strong></h2>
+
+<p>Odometry data is an important source of information to let an autonomous robot find it’s
+location in its environment. A multitude of sensors are often used to enable a robot
+to collect odometry information, but each sensor tends to have a unique error characteristic.</p>
+
+<p>As a part of this project, I build a simulated robot in gazebo with an array of sensors and a linear
+kalman filter to combine there sources to give near accurate odometry.</p>
+
+<h1 id="-open-source-projects-"><u> Open-source Projects </u></h1>
+
+<h2 id="tensorflow">Tensorflow</h2>
+
+<p>TensorFlow is a free and open-source software library for machine learning and artificial intelligence. It can be used across a range of tasks but has a particular focus on training and inference of deep neural networks.</p>
+
+<p>As part of Google Summer of Code 2020, I helped build batching into forward-mode automatic differentiation.</p>
+
+<p><a href="https://gist.github.com/abhichou4/449286bf1cec8dea9f2ac5735c6f3826">Link to the project.</a></p>
+
+<h2 id="noobautograd">NoobAutograd</h2>
+
+<p>I toy-implementation for both forward-mode and backward mode automatic differentiation. It can successfully compute numerical gradients for scalar operations.</p>
+
+<p><a href="https://github.com/abhichou4/NoobAutograd">Link to the project.</a></p>
+
+<h2 id="swift-for-tensorflow-benchmarks">Swift for Tensorflow Benchmarks</h2>
+
+<p>Python is not the future of machine learning. It’s slow, GIL forces using external C for concurrency, and accelerators force things into CUDA code. Building machine learning frameworks in python basically require writing a lot of code in another launguge (like C++) and giving it a python API.</p>
+
+<p>One effort to create something more satisfying was Swift for Tensorflow. Swift is optimized for mordern hardware, has language integrated autodiff, and extendible on all levels (even the primative data types). This repo tries to benchmark S4TF models to that of Tesorflow, Keras &amp; Pytorch.</p>
+
+<p><a href="https://github.com/abhichou4/s4tf-benchmark">Link to the project.</a></p>
+
 
       </div>
     </main><footer class="site-footer h-card">
