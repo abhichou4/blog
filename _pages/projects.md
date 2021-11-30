@@ -7,13 +7,15 @@ search_exclude: true
 
 # <u> Robotics Projects </u>
 
-## **Eve: A self-driving car**
+## Eve: A self-driving car
 
 Eve is an electic vehicle with self-driving capabilities being developed by Project MANAS for the indian roads. The EV finished top 5 in the Mahidra Rise Prize competition, winning 20 lakhs for future developement.
 
+<img src="../images/eve.gif" />
+
 I worked on object-detection and tracking, and lane-detection modules of the car in my tenure as Perception Head. It has been one of the most exciting projects I've worked on.
 
-## **Solo: An autonomous ground vehicle**
+## Solo: An autonomous ground vehicle
 
 <img src="../images/solo-championship.jpg" width="60%" style="margin: 15px;" />
 
@@ -21,7 +23,7 @@ Solo is an autonous ground vehicle built by Project MANAS, capable of navigating
 
 I worked on helping it avoid potholes and mapping model detection to ground frame using images and their corresponding point cloud. I learned a lot working on this project.
 
-## **Fuse My Senses: Odometry estimation**
+## Fuse My Senses: Odometry estimation
 
 Odometry data is an important source of information to let an autonomous robot find it’s
 location in its environment. A multitude of sensors are often used to enable a robot
