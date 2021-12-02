@@ -9,9 +9,9 @@ search_exclude: true
 
 ## Eve: A self-driving car
 
-Eve is an electic vehicle with self-driving capabilities being developed by Project MANAS for the indian roads. The EV finished top 5 in the Mahidra Rise Prize competition, winning 20 lakhs for future developement.
-
 <img src="https://media.githubusercontent.com/media/abhichou4/blog/master/images/eve.gif" />
+
+Eve is an electic vehicle with self-driving capabilities being developed by Project MANAS for the indian roads. The EV finished top 5 in the Mahidra Rise Prize competition, winning 20 lakhs for future developement.
 
 I worked on object-detection and tracking, and lane-detection modules of the car in my tenure as Perception Head. It has been one of the most exciting projects I've worked on.
 
