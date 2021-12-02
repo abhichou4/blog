@@ -11,13 +11,13 @@ search_exclude: true
 
 Eve is an electic vehicle with self-driving capabilities being developed by Project MANAS for the indian roads. The EV finished top 5 in the Mahidra Rise Prize competition, winning 20 lakhs for future developement.
 
-<img src="../images/eve.gif" />
+<img src="https://media.githubusercontent.com/media/abhichou4/blog/master/images/eve.gif" />
 
 I worked on object-detection and tracking, and lane-detection modules of the car in my tenure as Perception Head. It has been one of the most exciting projects I've worked on.
 
 ## Solo: An autonomous ground vehicle
 
-<img src="../images/solo-championship.jpg" width="60%" style="margin: 15px;" />
+<img src="https://media.githubusercontent.com/media/abhichou4/blog/master/images/solo-championship.jpg" width="60%" style="margin: 15px;" />
 
 Solo is an autonous ground vehicle built by Project MANAS, capable of navigating courses with static obstacles. It bagged the grand prize at IGVC 2019, held at Oakland University, Michigan.
 
