@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://abhichou4.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhichou4.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-12-05T16:08:09-06:00</updated><id>https://abhichou4.github.io/blog/feed.xml</id><title type="html">Abhineet’s Blog</title><subtitle>NoobMaster</subtitle><entry><title type="html">Mathematics for Deep Learning - A Cookbook</title><link href="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html" rel="alternate" type="text/html" title="Mathematics for Deep Learning - A Cookbook" /><published>2021-12-06T00:00:00-06:00</published><updated>2021-12-06T00:00:00-06:00</updated><id>https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook</id><content type="html" xml:base="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html">&lt;p&gt;This blog post serves as a quick review for the mathematics of my Deep Learning class.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://abhichou4.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhichou4.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-12-05T16:50:11-06:00</updated><id>https://abhichou4.github.io/blog/feed.xml</id><title type="html">Abhineet’s Blog</title><subtitle>NoobMaster</subtitle><entry><title type="html">Mathematics for Deep Learning - A Cookbook</title><link href="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html" rel="alternate" type="text/html" title="Mathematics for Deep Learning - A Cookbook" /><published>2021-12-06T00:00:00-06:00</published><updated>2021-12-06T00:00:00-06:00</updated><id>https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook</id><content type="html" xml:base="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html">&lt;p&gt;This blog post serves as a quick review for the mathematics of my Deep Learning class.&lt;/p&gt;
 
 &lt;h2 id=&quot;probability&quot;&gt;Probability&lt;/h2&gt;
 
@@ -77,7 +77,44 @@
 
 &lt;p&gt;Conditional independence is independence, given another random variable $z$.&lt;/p&gt;
 
-&lt;p&gt;$p(\bold{x} = x, \bold{y} = y \mid \bold{z} = z) = p(\bold{x} = x \mid \bold{z} = z) \cdot p(\bold{y} = y \mid \bold{z} = z)$&lt;/p&gt;</content><author><name></name></author><category term="Mathematics" /><category term="Deep Learning" /><summary type="html">This blog post serves as a quick review for the mathematics of my Deep Learning class.</summary></entry><entry><title type="html">Process Synchronization</title><link href="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html" rel="alternate" type="text/html" title="Process Synchronization" /><published>2021-08-06T00:00:00-05:00</published><updated>2021-08-06T00:00:00-05:00</updated><id>https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS</id><content type="html" xml:base="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html">&lt;h3 id=&quot;the-critical-section-problem&quot;&gt;The Critical Section Problem&lt;/h3&gt;
+&lt;p&gt;$p(\bold{x} = x, \bold{y} = y \mid \bold{z} = z) = p(\bold{x} = x \mid \bold{z} = z) \cdot p(\bold{y} = y \mid \bold{z} = z)$&lt;/p&gt;
+
+&lt;h3 id=&quot;expectance-variance-and-covariance&quot;&gt;Expectance, Variance and Covariance&lt;/h3&gt;
+
+&lt;p&gt;The expectation of expected value of a function $f(x)$ is the mean or average value it takes when the random variable $x$ is drawn from the probability distribution $P(x)$&lt;/p&gt;
+
+&lt;p&gt;$E_{x \sim P(x)}[f(x)] = \displaystyle\sum_x P(x)f(x)$&lt;/p&gt;
+
+&lt;p&gt;$E_{x \sim p(x)}[f(x)] = \displaystyle\int p(x)f(x) \, dx$&lt;/p&gt;
+
+&lt;p&gt;Expectations are linear i.e.&lt;/p&gt;
+
+&lt;p&gt;$E[\alpha f(x) + \beta g(x)] = \alpha E[f(x)] + \beta E[g(x)]$&lt;/p&gt;
+
+&lt;p&gt;if $\alpha$ and $\beta$ are independent of $x$.&lt;/p&gt;
+
+&lt;p&gt;Variance is a measure of how much the value deviates from the expected values.&lt;/p&gt;
+
+&lt;p&gt;$Var(f(x)) = E[f(x) - E[f(x)]]$&lt;/p&gt;
+
+&lt;p&gt;Square root of variance is the standard deviation.&lt;/p&gt;
+
+&lt;p&gt;The covariance gives some sense of how much two function values are linearly related to each other, as well as the scale of these values.&lt;/p&gt;
+
+&lt;p&gt;$Cov(f(x), g(x)) = E[(f(x) - E[f(x)])(g(x) - E[g(x)])]$&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;High absolute value means the values change very much and are far from their respective means at the same time (their scale).&lt;/li&gt;
+  &lt;li&gt;If positive, both functions tends to take high values simultaneously (linear relation).&lt;/li&gt;
+  &lt;li&gt;If negative, one function tends to take higher values while the other takes lower and vise versa (linear relation).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Correlation normalizes each variable in order to measure relation independent of scale.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Two functions on random variables can have zero covariance, and still be dependent. Eg: $f(x) = x, x \in U[-1, 1]$ and $g(x) = sx$ where $s$ is a random variable with $1/2$ probability to be $1$ and rest to be $-1$. Although $g(x)$ is clearly dependent on $x$, $Cov(f(x), g(x)) = 0$. The reason it is not the sufficient condition for independence is it doesn’t account for non-linear relationship.&lt;/li&gt;
+  &lt;li&gt;But if covariance is not-zero, the two functions have some linear dependency.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="Mathematics" /><category term="Deep Learning" /><summary type="html">This blog post serves as a quick review for the mathematics of my Deep Learning class.</summary></entry><entry><title type="html">Process Synchronization</title><link href="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html" rel="alternate" type="text/html" title="Process Synchronization" /><published>2021-08-06T00:00:00-05:00</published><updated>2021-08-06T00:00:00-05:00</updated><id>https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS</id><content type="html" xml:base="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html">&lt;h3 id=&quot;the-critical-section-problem&quot;&gt;The Critical Section Problem&lt;/h3&gt;
 
 &lt;p&gt;The critical section contain variables shared among different processes. The values of these may change
 depending on the order in which in is accessed by various processes. This can result in corruption of data. Thus, only one process should
