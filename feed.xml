@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://abhichou4.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhichou4.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-12-05T15:59:58-06:00</updated><id>https://abhichou4.github.io/blog/feed.xml</id><title type="html">Abhineet’s Blog</title><subtitle>NoobMaster</subtitle><entry><title type="html">Mathematics for Deep Learning - A Cookbook</title><link href="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html" rel="alternate" type="text/html" title="Mathematics for Deep Learning - A Cookbook" /><published>2021-12-06T00:00:00-06:00</published><updated>2021-12-06T00:00:00-06:00</updated><id>https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook</id><content type="html" xml:base="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html">&lt;p&gt;This blog post serves as a quick review for the mathematics of my Deep Learning class.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://abhichou4.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhichou4.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-12-05T16:04:05-06:00</updated><id>https://abhichou4.github.io/blog/feed.xml</id><title type="html">Abhineet’s Blog</title><subtitle>NoobMaster</subtitle><entry><title type="html">Mathematics for Deep Learning - A Cookbook</title><link href="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html" rel="alternate" type="text/html" title="Mathematics for Deep Learning - A Cookbook" /><published>2021-12-06T00:00:00-06:00</published><updated>2021-12-06T00:00:00-06:00</updated><id>https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook</id><content type="html" xml:base="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html">&lt;p&gt;This blog post serves as a quick review for the mathematics of my Deep Learning class.&lt;/p&gt;
 
 &lt;h2 id=&quot;probability&quot;&gt;Probability&lt;/h2&gt;
 
@@ -74,14 +74,7 @@
 
 &lt;p&gt;Using the above, any joint probability distribution over many random variables may be decomposed into conditional distributions over only one variable.&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;$P(\bold{x} ^{(1)},…, \bold{x} ^{(n)}) = P(\bold{x} ^{(1)}) \prod\limits_{i=2}^n P(\bold{x} ^{(i)}&lt;/td&gt;
-      &lt;td&gt;\bold{x} ^{(1)},…, \bold{x} ^{(i-1)})$&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;$P(\bold{x} ^{(1)},…, \bold{x} ^{(n)}) = P(\bold{x} ^{(1)}) \prod\limits_{i=2}^n P(\bold{x} ^{(i)} | \bold{x} ^{(1)},…, \bold{x} ^{(i-1)})$&lt;/p&gt;
 
 &lt;h3 id=&quot;independence-and-conditional-independence&quot;&gt;Independence and Conditional Independence&lt;/h3&gt;
 
@@ -91,16 +84,7 @@
 
 &lt;p&gt;Conditional independence is independence, given another random variable $z$.&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;$p(\bold{x} = x, \bold{y} = y&lt;/td&gt;
-      &lt;td&gt;\bold{z} = z) = p(\bold{x} = x&lt;/td&gt;
-      &lt;td&gt;\bold{z} = z) \cdot p(\bold{y} = y&lt;/td&gt;
-      &lt;td&gt;\bold{z} = z)$&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name></name></author><category term="Mathematics" /><category term="Deep Learning" /><summary type="html">This blog post serves as a quick review for the mathematics of my Deep Learning class.</summary></entry><entry><title type="html">Process Synchronization</title><link href="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html" rel="alternate" type="text/html" title="Process Synchronization" /><published>2021-08-06T00:00:00-05:00</published><updated>2021-08-06T00:00:00-05:00</updated><id>https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS</id><content type="html" xml:base="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html">&lt;h3 id=&quot;the-critical-section-problem&quot;&gt;The Critical Section Problem&lt;/h3&gt;
+&lt;p&gt;$p(\bold{x} = x, \bold{y} = y | \bold{z} = z) = p(\bold{x} = x | \bold{z} = z) \cdot p(\bold{y} = y | \bold{z} = z)$&lt;/p&gt;</content><author><name></name></author><category term="Mathematics" /><category term="Deep Learning" /><summary type="html">This blog post serves as a quick review for the mathematics of my Deep Learning class.</summary></entry><entry><title type="html">Process Synchronization</title><link href="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html" rel="alternate" type="text/html" title="Process Synchronization" /><published>2021-08-06T00:00:00-05:00</published><updated>2021-08-06T00:00:00-05:00</updated><id>https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS</id><content type="html" xml:base="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html">&lt;h3 id=&quot;the-critical-section-problem&quot;&gt;The Critical Section Problem&lt;/h3&gt;
 
 &lt;p&gt;The critical section contain variables shared among different processes. The values of these may change
 depending on the order in which in is accessed by various processes. This can result in corruption of data. Thus, only one process should

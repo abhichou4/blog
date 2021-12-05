@@ -212,14 +212,7 @@ window.onload = wrap_img;
 
 <p>Using the above, any joint probability distribution over many random variables may be decomposed into conditional distributions over only one variable.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>$P(\bold{x} ^{(1)},…, \bold{x} ^{(n)}) = P(\bold{x} ^{(1)}) \prod\limits_{i=2}^n P(\bold{x} ^{(i)}</td>
-      <td>\bold{x} ^{(1)},…, \bold{x} ^{(i-1)})$</td>
-    </tr>
-  </tbody>
-</table>
+<p>$P(\bold{x} ^{(1)},…, \bold{x} ^{(n)}) = P(\bold{x} ^{(1)}) \prod\limits_{i=2}^n P(\bold{x} ^{(i)} | \bold{x} ^{(1)},…, \bold{x} ^{(i-1)})$</p>
 
 <h3 id="independence-and-conditional-independence">
 <a class="anchor" href="#independence-and-conditional-independence" aria-hidden="true"><span class="octicon octicon-link"></span></a>Independence and Conditional Independence</h3>
@@ -230,16 +223,7 @@ window.onload = wrap_img;
 
 <p>Conditional independence is independence, given another random variable $z$.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>$p(\bold{x} = x, \bold{y} = y</td>
-      <td>\bold{z} = z) = p(\bold{x} = x</td>
-      <td>\bold{z} = z) \cdot p(\bold{y} = y</td>
-      <td>\bold{z} = z)$</td>
-    </tr>
-  </tbody>
-</table>
+<p>$p(\bold{x} = x, \bold{y} = y | \bold{z} = z) = p(\bold{x} = x | \bold{z} = z) \cdot p(\bold{y} = y | \bold{z} = z)$</p>
 
 
   </div><a class="u-url" href="/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html" hidden></a>
