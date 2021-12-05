@@ -254,8 +254,16 @@ window.onload = wrap_img;
 
 <ul>
   <li>Two functions on random variables can have zero covariance, and still be dependent. Eg: $f(x) = x, x \in U[-1, 1]$ and $g(x) = sx$ where $s$ is a random variable with $1/2$ probability to be $1$ and rest to be $-1$. Although $g(x)$ is clearly dependent on $x$, $Cov(f(x), g(x)) = 0$. The reason it is not the sufficient condition for independence is it doesn’t account for non-linear relationship.</li>
-  <li>But if covariance is not-zero, the two functions have some linear dependency.</li>
+  <li>But if covariance is non-zero, the two functions have some linear dependency.</li>
 </ul>
+
+<p>Covariance for a random vector $\bold{x} \in \mathbb{R}^n$ is an $N \times N$ matrix such that</p>
+
+<p>$Cov(x)_{i, j} = Cov(x_i, x_j)$</p>
+
+<p>and diagonal elements of the covariance matrix give the variance:</p>
+
+<p>$diag(Cov(x)) = Var(x)$</p>
 
   </div><a class="u-url" href="/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html" hidden></a>
 </article>
