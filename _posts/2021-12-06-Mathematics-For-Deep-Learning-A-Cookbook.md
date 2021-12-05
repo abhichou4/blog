@@ -82,3 +82,4 @@ $p(\bold{x} = x, \bold{y} = y) = p(\bold{x} = x) \cdot p(\bold{y} = y)$
 Conditional independence is independence, given another random variable $z$.
 
 $p(\bold{x} = x, \bold{y} = y | \bold{z} = z) = p(\bold{x} = x | \bold{z} = z) \cdot p(\bold{y} = y | \bold{z} = z)$
+
