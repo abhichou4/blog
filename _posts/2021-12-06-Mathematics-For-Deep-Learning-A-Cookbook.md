@@ -114,4 +114,12 @@ $Cov(f(x), g(x)) = E[(f(x) - E[f(x)])(g(x) - E[g(x)])]$
 Correlation normalizes each variable in order to measure relation independent of scale.
 
 * Two functions on random variables can have zero covariance, and still be dependent. Eg: $f(x) = x, x \in U[-1, 1]$ and $g(x) = sx$ where $s$ is a random variable with $1/2$ probability to be $1$ and rest to be $-1$. Although $g(x)$ is clearly dependent on $x$, $Cov(f(x), g(x)) = 0$. The reason it is not the sufficient condition for independence is it doesn't account for non-linear relationship.
-* But if covariance is not-zero, the two functions have some linear dependency.
+* But if covariance is non-zero, the two functions have some linear dependency.
+
+Covariance for a random vector $\bold{x} \in \mathbb{R}^n$ is an $N \times N$ matrix such that
+
+$Cov(x)_{i, j} = Cov(x_i, x_j)$
+
+and diagonal elements of the covariance matrix give the variance:
+
+$diag(Cov(x)) = Var(x)$ 
