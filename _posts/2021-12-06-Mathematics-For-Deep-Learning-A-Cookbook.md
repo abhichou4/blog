@@ -32,7 +32,7 @@ There are there conditions for a PMF must satisfy:
 
 1. The domain of P must be the set of all possible states of $\bold{x}$
 2. $\forall x \in \bold{x}, 0 \leq P(x) \leq 1$
-3. $\sum_{{x} \in \bold{x}} P(x) = 1$
+3. $\forall {x} \in \bold{x}, \sum P(x) = 1$
 
 
 ### Probability Density Functions (PDF)
