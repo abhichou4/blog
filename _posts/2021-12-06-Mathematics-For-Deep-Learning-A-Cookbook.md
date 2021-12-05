@@ -83,3 +83,35 @@ Conditional independence is independence, given another random variable $z$.
 
 $p(\bold{x} = x, \bold{y} = y \mid \bold{z} = z) = p(\bold{x} = x \mid \bold{z} = z) \cdot p(\bold{y} = y \mid \bold{z} = z)$
 
+### Expectance, Variance and Covariance
+
+The expectation of expected value of a function $f(x)$ is the mean or average value it takes when the random variable $x$ is drawn from the probability distribution $P(x)$
+
+$E_{x \sim P(x)}[f(x)] = \displaystyle\sum_x P(x)f(x)$ 
+
+$E_{x \sim p(x)}[f(x)] = \displaystyle\int p(x)f(x) \, dx$
+
+Expectations are linear i.e.
+
+$E[\alpha f(x) + \beta g(x)] = \alpha E[f(x)] + \beta E[g(x)]$
+
+if $\alpha$ and $\beta$ are independent of $x$.
+
+Variance is a measure of how much the value deviates from the expected values.
+
+$Var(f(x)) = E[f(x) - E[f(x)]]$
+
+Square root of variance is the standard deviation.
+
+The covariance gives some sense of how much two function values are linearly related to each other, as well as the scale of these values.
+
+$Cov(f(x), g(x)) = E[(f(x) - E[f(x)])(g(x) - E[g(x)])]$
+
+* High absolute value means the values change very much and are far from their respective means at the same time (their scale).
+* If positive, both functions tends to take high values simultaneously (linear relation).
+* If negative, one function tends to take higher values while the other takes lower and vise versa (linear relation).
+
+Correlation normalizes each variable in order to measure relation independent of scale.
+
+* Two functions on random variables can have zero covariance, and still be dependent. Eg: $f(x) = x, x \in U[-1, 1]$ and $g(x) = sx$ where $s$ is a random variable with $1/2$ probability to be $1$ and rest to be $-1$. Although $g(x)$ is clearly dependent on $x$, $Cov(f(x), g(x)) = 0$. The reason it is not the sufficient condition for independence is it doesn't account for non-linear relationship.
+* But if covariance is not-zero, the two functions have some linear dependency.
