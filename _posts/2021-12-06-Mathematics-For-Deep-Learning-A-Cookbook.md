@@ -61,7 +61,7 @@ $p(x) = \int p(x, y) \, dy$
 
 Computes the probabilty of one event happening given that another has happened.
 
-$P(\bold{y} = y | \bold{x} = x) = \frac{\displaystyle P(\bold{y} = y, \bold{x} = x)}{\displaystyle P(\bold{x} = x)}$
+$P(\bold{y} = y \mid \bold{x} = x) = \frac{\displaystyle P(\bold{y} = y, \bold{x} = x)}{\displaystyle P(\bold{x} = x)}$
 
 It can only be computed if $P(\bold{x}) > 0$.
 
@@ -71,7 +71,7 @@ Note: This is not the same as what would happen if some action was taken. Those 
 
 Using the above, any joint probability distribution over many random variables may be decomposed into conditional distributions over only one variable.
 
-$P(\bold{x} ^{(1)},..., \bold{x} ^{(n)}) = P(\bold{x} ^{(1)}) \prod\limits_{i=2}^n P(\bold{x} ^{(i)} \| \bold{x} ^{(1)},..., \bold{x} ^{(i-1)})$
+$P(\bold{x} ^{(1)},..., \bold{x} ^{(n)}) = P(\bold{x} ^{(1)}) \prod\limits_{i=2}^n P(\bold{x} ^{(i)} \mid \bold{x} ^{(1)},..., \bold{x} ^{(i-1)})$
 
 ### Independence and Conditional Independence
 
@@ -81,5 +81,5 @@ $p(\bold{x} = x, \bold{y} = y) = p(\bold{x} = x) \cdot p(\bold{y} = y)$
 
 Conditional independence is independence, given another random variable $z$.
 
-$p(\bold{x} = x, \bold{y} = y \| \bold{z} = z) = p(\bold{x} = x \| \bold{z} = z) \cdot p(\bold{y} = y \| \bold{z} = z)$
+$p(\bold{x} = x, \bold{y} = y \mid \bold{z} = z) = p(\bold{x} = x \mid \bold{z} = z) \cdot p(\bold{y} = y \mid \bold{z} = z)$
 
