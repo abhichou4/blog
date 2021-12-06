@@ -138,7 +138,7 @@ $P(x = 1) = \phi$ \
 $P(x = 0) = 1 - \phi$ \
 $x \in [0, 1], P(\bold{x} = x) = \phi ^ x (1 - \phi) ^ {1 -x}$ \
 $E[x] = \phi$ \
-$Var(x) = \phi(1 - \phi)$ \
+$Var(x) = \phi(1 - \phi)$
 
 ##### Multinoulli Distribution
 
