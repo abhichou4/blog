@@ -123,3 +123,53 @@ $Cov(x)_{i, j} = Cov(x_i, x_j)$
 and diagonal elements of the covariance matrix give the variance:
 
 $diag(Cov(x)) = Var(x)$ 
+
+### Common Probability Distributions
+
+#### Discrete Probability Distribution
+
+Bernoulli and Multinoulli distributions are enough to describe any discrete distribution over their domain, since the domain is very simple.
+
+##### Bernoulli Distribution
+
+It's a distribution over a single binary variable. It's main parameter is $\phi \in [0, 1]$.
+
+$P(x = 1) = \phi$ \
+$P(x = 0) = 1 - \phi$ \
+$x \in [0, 1], P(\bold{x} = x) = \phi ^ x (1 - \phi) ^ {1 -x}$ \
+$E[x] = \phi$ \
+$Var(x) = \phi(1 - \phi)$ \
+
+##### Multinoulli Distribution
+
+It's a distribution over a single discrete variable with k different states, where k is finite. It is parameterize by a vector $\bold{p} \in [0, 1] ^ k -1$, where $p_i$ is the probability of $ith$ state. The $kth$ state probability is $1 - \bold{1}^T \bold{p}$. Therefore, $\bold{1}^T \bold{p} \leq 1$. Since the probabilities aren't defined, expectation and variance are not calculated for this distribution. 
+
+#### Continuous Probability Distributions
+
+When dealing with continuous distributions, there are infinite states, so any distribution with small number of parameters must impose strict limits on the distribution.
+
+#### Gaussian Distribution
+
+The most common distribution over real numbers is the gaussian distribution.
+
+$\mathcal{N}(x; \mu, \sigma^2) = \sqrt{\displaystyle\frac{1}{2 \pi \sigma^2}} \Bigg(\displaystyle\frac{-1}{2 \sigma^2} (x - \mu)^2\Bigg)$
+
+Where $\mu$ is the mean and $\sigma^2$ is the standard deviation for the distribution. 
+An even better way to parameterize the normal distribution is using precision or inverse variance $\beta$:
+
+$\mathcal{N}(x; \mu, \beta^-1) = \sqrt{\displaystyle\frac{\beta}{2 \pi}} \Bigg(\displaystyle\frac{-\beta}{2} (x - \mu)^2\Bigg)$
+
+Standard normal distribution is with $\mu = 0$ and $\sigma = 1$
+
+In the absence of prior knowledge about distribution for a random variable, normal distribution is a good choice for two main reasons:
+
+1. The central limit theorem shows that the sum of many independent random is approximately normal distribution. So many complicated systems can be modelled as normal distribution noise.
+2. Out of all possible probability distributions with same variance, normal distribution encodes maximum about of uncertainity and least amount of prior.
+
+#### Exponential and Laplace Distributions
+
+#### The Dirac Distribution and Empirical Distribution
+
+#### Mixtures of Distribution
+
+Status: Work in Progress.
