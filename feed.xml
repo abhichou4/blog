@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://abhichou4.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhichou4.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-12-05T18:25:43-06:00</updated><id>https://abhichou4.github.io/blog/feed.xml</id><title type="html">Abhineet’s Blog</title><subtitle>NoobMaster</subtitle><entry><title type="html">Mathematics for Deep Learning - A Cookbook</title><link href="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html" rel="alternate" type="text/html" title="Mathematics for Deep Learning - A Cookbook" /><published>2021-12-06T00:00:00-06:00</published><updated>2021-12-06T00:00:00-06:00</updated><id>https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook</id><content type="html" xml:base="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html">&lt;p&gt;This blog post serves as a quick review for the mathematics of my Deep Learning class.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://abhichou4.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhichou4.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-12-05T18:49:05-06:00</updated><id>https://abhichou4.github.io/blog/feed.xml</id><title type="html">Abhineet’s Blog</title><subtitle>NoobMaster</subtitle><entry><title type="html">Mathematics for Deep Learning - A Cookbook</title><link href="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html" rel="alternate" type="text/html" title="Mathematics for Deep Learning - A Cookbook" /><published>2021-12-06T00:00:00-06:00</published><updated>2021-12-06T00:00:00-06:00</updated><id>https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook</id><content type="html" xml:base="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html">&lt;p&gt;This blog post serves as a quick review for the mathematics of my Deep Learning class.&lt;/p&gt;
 
 &lt;h2 id=&quot;probability&quot;&gt;Probability&lt;/h2&gt;
 
@@ -168,9 +168,27 @@ An even better way to parameterize the normal distribution is using precision or
   &lt;li&gt;Out of all possible probability distributions with same variance, normal distribution encodes maximum about of uncertainity and least amount of prior.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&quot;exponential-and-laplace-distributions&quot;&gt;Exponential and Laplace Distributions&lt;/h4&gt;
+&lt;h5 id=&quot;exponential-and-laplace-distributions&quot;&gt;Exponential and Laplace Distributions&lt;/h5&gt;
 
-&lt;h4 id=&quot;the-dirac-distribution-and-empirical-distribution&quot;&gt;The Dirac Distribution and Empirical Distribution&lt;/h4&gt;
+&lt;p&gt;Sometimes we need probability distributions that model a sharp point at $x = 0$. Exponential distribution is used in such cases:&lt;/p&gt;
+
+&lt;p&gt;$p(x; \lambda) = \lambda \bold{1}_{x \geq 0}exp(-\lambda x)$&lt;/p&gt;
+
+&lt;p&gt;Exponential distribution uses the condition \bold{1}_{x \geq 0} to zero out all values of distribution for negative values of $x$.&lt;/p&gt;
+
+&lt;p&gt;Another distribution that puts sharp peak at an arbitrary point $\mu$ is Laplace Distribution:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$Laplace(x; \mu, \gamma) = \displaystyle \frac{1}{2 \gamma} exp\Bigg(-\frac{&lt;/td&gt;
+      &lt;td&gt;x - \mu&lt;/td&gt;
+      &lt;td&gt;}{\gamma}\Bigg)$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h5 id=&quot;the-dirac-distribution-and-empirical-distribution&quot;&gt;The Dirac Distribution and Empirical Distribution&lt;/h5&gt;
 
 &lt;h4 id=&quot;mixtures-of-distribution&quot;&gt;Mixtures of Distribution&lt;/h4&gt;
 

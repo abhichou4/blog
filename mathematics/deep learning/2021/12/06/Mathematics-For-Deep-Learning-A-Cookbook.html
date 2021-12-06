@@ -138,10 +138,10 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h4"><a href="#continuous-probability-distributions">Continuous Probability Distributions</a>
 <ul>
 <li class="toc-entry toc-h5"><a href="#gaussian-distribution">Gaussian Distribution</a></li>
+<li class="toc-entry toc-h5"><a href="#exponential-and-laplace-distributions">Exponential and Laplace Distributions</a></li>
+<li class="toc-entry toc-h5"><a href="#the-dirac-distribution-and-empirical-distribution">The Dirac Distribution and Empirical Distribution</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h4"><a href="#exponential-and-laplace-distributions">Exponential and Laplace Distributions</a></li>
-<li class="toc-entry toc-h4"><a href="#the-dirac-distribution-and-empirical-distribution">The Dirac Distribution and Empirical Distribution</a></li>
 <li class="toc-entry toc-h4"><a href="#mixtures-of-distribution">Mixtures of Distribution</a></li>
 </ul>
 </li>
@@ -333,11 +333,29 @@ An even better way to parameterize the normal distribution is using precision or
   <li>Out of all possible probability distributions with same variance, normal distribution encodes maximum about of uncertainity and least amount of prior.</li>
 </ol>
 
-<h4 id="exponential-and-laplace-distributions">
-<a class="anchor" href="#exponential-and-laplace-distributions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exponential and Laplace Distributions</h4>
+<h5 id="exponential-and-laplace-distributions">
+<a class="anchor" href="#exponential-and-laplace-distributions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exponential and Laplace Distributions</h5>
 
-<h4 id="the-dirac-distribution-and-empirical-distribution">
-<a class="anchor" href="#the-dirac-distribution-and-empirical-distribution" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Dirac Distribution and Empirical Distribution</h4>
+<p>Sometimes we need probability distributions that model a sharp point at $x = 0$. Exponential distribution is used in such cases:</p>
+
+<p>$p(x; \lambda) = \lambda \bold{1}_{x \geq 0}exp(-\lambda x)$</p>
+
+<p>Exponential distribution uses the condition \bold{1}_{x \geq 0} to zero out all values of distribution for negative values of $x$.</p>
+
+<p>Another distribution that puts sharp peak at an arbitrary point $\mu$ is Laplace Distribution:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>$Laplace(x; \mu, \gamma) = \displaystyle \frac{1}{2 \gamma} exp\Bigg(-\frac{</td>
+      <td>x - \mu</td>
+      <td>}{\gamma}\Bigg)$</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="the-dirac-distribution-and-empirical-distribution">
+<a class="anchor" href="#the-dirac-distribution-and-empirical-distribution" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Dirac Distribution and Empirical Distribution</h5>
 
 <h4 id="mixtures-of-distribution">
 <a class="anchor" href="#mixtures-of-distribution" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mixtures of Distribution</h4>
