@@ -176,7 +176,7 @@ Exponential distribution uses the condition \bold{1}_{x \geq 0} to zero out all 
 
 Another distribution that puts sharp peak at an arbitrary point $\mu$ is Laplace Distribution:
 
-$Laplace(x; \mu, \gamma) = \displaystyle \frac{1}{2 \gamma} exp\Bigg(-\frac{|x - \mu|}{\gamma}\Bigg)$
+$Laplace(x; \mu, \gamma) = \displaystyle \frac{1}{2 \gamma} exp\Bigg(-\frac{\mid x - \mu \mid}{\gamma}\Bigg)$
 
 ##### The Dirac Distribution and Empirical Distribution
 
