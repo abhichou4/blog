@@ -9,7 +9,7 @@ title: Mathematics for Deep Learning - A Cookbook
 This blog post serves as a quick review for the mathematics of my Deep Learning class.
 
 
-## Probability
+## Probability and Information Theory
 
 Probability can crudely be of two kinds:
 
@@ -223,6 +223,43 @@ Another powerful mixture distribution is gaussian mixture distribution where $p(
 Just like in $P(x \mid c)$ $c$ is seen prior to seeing $x$, P(c \mid x)$ is **posterior probability**, because it is computed after computing $x$.
 
 A Gaussian mixture model is a universal approximator i.e. any smooth distribution can be modelled with enough number of Gaussian mixture model with a non-zero error.
+
+### Bayes Rule
+
+$P(x \mid y) = \displaystyle\frac{P(y | x) P(x)}{P(y)}$
+
+and 
+
+$P(y) = \sum_x P(y | x) P(x)$
+
+### Some common function and their properties
+
+These are some common functions that come up in the context of deep learning and some of their properties.
+
+#### logistic sigmoid
+
+$\sigma(x)) = \displaystyle\frac{1}{1 + exp(-x)}$
+
+Often used to compute $\phi \in (0, 1)$ in Bernoulli distributions.
+
+#### Softplus
+
+$\zeta(x) = log(1 + exp(x))$
+
+It is a smoother version of $max{0, x}$. Often used to compute $\sum$ and $\beta \in (0, \infty)$ for normal distributions.
+
+#### Properties
+
+* $\displaystyle\frac{d\sigma(x)}{dx} = \sigma(x) (1 - \sigma(x))$
+* $1 - \sigma(x) = \sigma(-x)$
+* $log \sigma(x) = \zeta(-x)$
+* $\displaystyle\frac{d\zeta(x)}{dx} = \sigma(x)$
+* $\forall x \in (0, 1), \sigma^-1(x) = log(\displaystyle\frac{x}{1 - x}$
+* $\forall x > 0, \zeta^-1(x) = log(exp(x) - 1)$
+* $\zeta(x) = \int_{-\infty}^{x}\sigma(y)dy$
+* $\zeta(x) - \zeta(-x) = x$
+
+The last property further reinforces $\zeta(x)$ is analogous to $x^+ = max{0, x}$ as $x^+ - x^- = x$ too.
 
 
 Status: Work in Progress.
