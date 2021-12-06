@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://abhichou4.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhichou4.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-12-06T04:18:10-06:00</updated><id>https://abhichou4.github.io/blog/feed.xml</id><title type="html">Abhineet’s Blog</title><subtitle>NoobMaster</subtitle><entry><title type="html">Mathematics for Deep Learning - A Cookbook</title><link href="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html" rel="alternate" type="text/html" title="Mathematics for Deep Learning - A Cookbook" /><published>2021-12-06T00:00:00-06:00</published><updated>2021-12-06T00:00:00-06:00</updated><id>https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook</id><content type="html" xml:base="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html">&lt;p&gt;This blog post serves as a quick review for the mathematics of my Deep Learning class.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://abhichou4.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhichou4.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-12-06T06:49:42-06:00</updated><id>https://abhichou4.github.io/blog/feed.xml</id><title type="html">Abhineet’s Blog</title><subtitle>NoobMaster</subtitle><entry><title type="html">Mathematics for Deep Learning - A Cookbook</title><link href="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html" rel="alternate" type="text/html" title="Mathematics for Deep Learning - A Cookbook" /><published>2021-12-06T00:00:00-06:00</published><updated>2021-12-06T00:00:00-06:00</updated><id>https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook</id><content type="html" xml:base="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html">&lt;p&gt;This blog post serves as a quick review for the mathematics of my Deep Learning class.&lt;/p&gt;
 
-&lt;h2 id=&quot;probability&quot;&gt;Probability&lt;/h2&gt;
+&lt;h2 id=&quot;probability-and-information-theory&quot;&gt;Probability and Information Theory&lt;/h2&gt;
 
 &lt;p&gt;Probability can crudely be of two kinds:&lt;/p&gt;
 
@@ -227,6 +227,59 @@ $Var(x) = \phi(1 - \phi)$&lt;/p&gt;
 &lt;p&gt;Just like in $P(x \mid c)$ $c$ is seen prior to seeing $x$, P(c \mid x)$ is &lt;strong&gt;posterior probability&lt;/strong&gt;, because it is computed after computing $x$.&lt;/p&gt;
 
 &lt;p&gt;A Gaussian mixture model is a universal approximator i.e. any smooth distribution can be modelled with enough number of Gaussian mixture model with a non-zero error.&lt;/p&gt;
+
+&lt;h3 id=&quot;bayes-rule&quot;&gt;Bayes Rule&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$P(x \mid y) = \displaystyle\frac{P(y&lt;/td&gt;
+      &lt;td&gt;x) P(x)}{P(y)}$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$P(y) = \sum_x P(y&lt;/td&gt;
+      &lt;td&gt;x) P(x)$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;some-common-function-and-their-properties&quot;&gt;Some common function and their properties&lt;/h3&gt;
+
+&lt;p&gt;These are some common functions that come up in the context of deep learning and some of their properties.&lt;/p&gt;
+
+&lt;h4 id=&quot;logistic-sigmoid&quot;&gt;logistic sigmoid&lt;/h4&gt;
+
+&lt;p&gt;$\sigma(x)) = \displaystyle\frac{1}{1 + exp(-x)}$&lt;/p&gt;
+
+&lt;p&gt;Often used to compute $\phi \in (0, 1)$ in Bernoulli distributions.&lt;/p&gt;
+
+&lt;h4 id=&quot;softplus&quot;&gt;Softplus&lt;/h4&gt;
+
+&lt;p&gt;$\zeta(x) = log(1 + exp(x))$&lt;/p&gt;
+
+&lt;p&gt;It is a smoother version of $max{0, x}$. Often used to compute $\sum$ and $\beta \in (0, \infty)$ for normal distributions.&lt;/p&gt;
+
+&lt;h4 id=&quot;properties&quot;&gt;Properties&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$\displaystyle\frac{d\sigma(x)}{dx} = \sigma(x) (1 - \sigma(x))$&lt;/li&gt;
+  &lt;li&gt;$1 - \sigma(x) = \sigma(-x)$&lt;/li&gt;
+  &lt;li&gt;$log \sigma(x) = \zeta(-x)$&lt;/li&gt;
+  &lt;li&gt;$\displaystyle\frac{d\zeta(x)}{dx} = \sigma(x)$&lt;/li&gt;
+  &lt;li&gt;$\forall x \in (0, 1), \sigma^-1(x) = log(\displaystyle\frac{x}{1 - x}$&lt;/li&gt;
+  &lt;li&gt;$\forall x &amp;gt; 0, \zeta^-1(x) = log(exp(x) - 1)$&lt;/li&gt;
+  &lt;li&gt;$\zeta(x) = \int_{-\infty}^{x}\sigma(y)dy$&lt;/li&gt;
+  &lt;li&gt;$\zeta(x) - \zeta(-x) = x$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The last property further reinforces $\zeta(x)$ is analogous to $x^+ = max{0, x}$ as $x^+ - x^- = x$ too.&lt;/p&gt;
 
 &lt;p&gt;Status: Work in Progress.&lt;/p&gt;</content><author><name></name></author><category term="Mathematics" /><category term="Deep Learning" /><summary type="html">This blog post serves as a quick review for the mathematics of my Deep Learning class.</summary></entry><entry><title type="html">Process Synchronization</title><link href="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html" rel="alternate" type="text/html" title="Process Synchronization" /><published>2021-08-06T00:00:00-05:00</published><updated>2021-08-06T00:00:00-05:00</updated><id>https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS</id><content type="html" xml:base="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html">&lt;h3 id=&quot;the-critical-section-problem&quot;&gt;The Critical Section Problem&lt;/h3&gt;
 

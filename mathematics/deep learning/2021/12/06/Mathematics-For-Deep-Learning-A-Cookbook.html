@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      8 min read
+      9 min read
     
 </span></p>
 
@@ -113,7 +113,7 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#probability">Probability</a>
+<li class="toc-entry toc-h2"><a href="#probability-and-information-theory">Probability and Information Theory</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#random-variables">Random Variables</a></li>
 <li class="toc-entry toc-h3"><a href="#probability-mass-functions-pmf">Probability Mass Functions (PMF)</a></li>
@@ -145,12 +145,20 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h4"><a href="#mixtures-of-distribution">Mixtures of Distribution</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h3"><a href="#bayes-rule">Bayes Rule</a></li>
+<li class="toc-entry toc-h3"><a href="#some-common-function-and-their-properties">Some common function and their properties</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#logistic-sigmoid">logistic sigmoid</a></li>
+<li class="toc-entry toc-h4"><a href="#softplus">Softplus</a></li>
+<li class="toc-entry toc-h4"><a href="#properties">Properties</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul><p>This blog post serves as a quick review for the mathematics of my Deep Learning class.</p>
 
-<h2 id="probability">
-<a class="anchor" href="#probability" aria-hidden="true"><span class="octicon octicon-link"></span></a>Probability</h2>
+<h2 id="probability-and-information-theory">
+<a class="anchor" href="#probability-and-information-theory" aria-hidden="true"><span class="octicon octicon-link"></span></a>Probability and Information Theory</h2>
 
 <p>Probability can crudely be of two kinds:</p>
 
@@ -395,6 +403,64 @@ $Var(x) = \phi(1 - \phi)$</p>
 <p>Just like in $P(x \mid c)$ $c$ is seen prior to seeing $x$, P(c \mid x)$ is <strong>posterior probability</strong>, because it is computed after computing $x$.</p>
 
 <p>A Gaussian mixture model is a universal approximator i.e. any smooth distribution can be modelled with enough number of Gaussian mixture model with a non-zero error.</p>
+
+<h3 id="bayes-rule">
+<a class="anchor" href="#bayes-rule" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bayes Rule</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>$P(x \mid y) = \displaystyle\frac{P(y</td>
+      <td>x) P(x)}{P(y)}$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>and</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>$P(y) = \sum_x P(y</td>
+      <td>x) P(x)$</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="some-common-function-and-their-properties">
+<a class="anchor" href="#some-common-function-and-their-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Some common function and their properties</h3>
+
+<p>These are some common functions that come up in the context of deep learning and some of their properties.</p>
+
+<h4 id="logistic-sigmoid">
+<a class="anchor" href="#logistic-sigmoid" aria-hidden="true"><span class="octicon octicon-link"></span></a>logistic sigmoid</h4>
+
+<p>$\sigma(x)) = \displaystyle\frac{1}{1 + exp(-x)}$</p>
+
+<p>Often used to compute $\phi \in (0, 1)$ in Bernoulli distributions.</p>
+
+<h4 id="softplus">
+<a class="anchor" href="#softplus" aria-hidden="true"><span class="octicon octicon-link"></span></a>Softplus</h4>
+
+<p>$\zeta(x) = log(1 + exp(x))$</p>
+
+<p>It is a smoother version of $max{0, x}$. Often used to compute $\sum$ and $\beta \in (0, \infty)$ for normal distributions.</p>
+
+<h4 id="properties">
+<a class="anchor" href="#properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Properties</h4>
+
+<ul>
+  <li>$\displaystyle\frac{d\sigma(x)}{dx} = \sigma(x) (1 - \sigma(x))$</li>
+  <li>$1 - \sigma(x) = \sigma(-x)$</li>
+  <li>$log \sigma(x) = \zeta(-x)$</li>
+  <li>$\displaystyle\frac{d\zeta(x)}{dx} = \sigma(x)$</li>
+  <li>$\forall x \in (0, 1), \sigma^-1(x) = log(\displaystyle\frac{x}{1 - x}$</li>
+  <li>$\forall x &gt; 0, \zeta^-1(x) = log(exp(x) - 1)$</li>
+  <li>$\zeta(x) = \int_{-\infty}^{x}\sigma(y)dy$</li>
+  <li>$\zeta(x) - \zeta(-x) = x$</li>
+</ul>
+
+<p>The last property further reinforces $\zeta(x)$ is analogous to $x^+ = max{0, x}$ as $x^+ - x^- = x$ too.</p>
 
 <p>Status: Work in Progress.</p>
 
