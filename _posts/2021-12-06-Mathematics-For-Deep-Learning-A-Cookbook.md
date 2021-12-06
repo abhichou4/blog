@@ -122,7 +122,7 @@ $Cov(x)_{i, j} = Cov(x_i, x_j)$
 
 and diagonal elements of the covariance matrix give the variance:
 
-$diag(Cov(x)) = Var(x)$ 
+$\sum diag(Cov(x)) = Var(x)$ 
 
 ### Common Probability Distributions
 
@@ -154,7 +154,8 @@ The most common distribution over real numbers is the gaussian distribution.
 
 $\mathcal{N}(x; \mu, \sigma^2) = \sqrt{\displaystyle\frac{1}{2 \pi \sigma^2}} \Bigg(\displaystyle\frac{-1}{2 \sigma^2} (x - \mu)^2\Bigg)$
 
-Where $\mu$ is the mean and $\sigma^2$ is the standard deviation for the distribution. 
+Where $\mu$ is the mean and $\sigma^2$ is the standard deviation for the distribution.
+
 An even better way to parameterize the normal distribution is using precision or inverse variance $\beta$:
 
 $\mathcal{N}(x; \mu, \beta^-1) = \sqrt{\displaystyle\frac{\beta}{2 \pi}} \Bigg(\displaystyle\frac{-\beta}{2} (x - \mu)^2\Bigg)$
@@ -165,6 +166,14 @@ In the absence of prior knowledge about distribution for a random variable, norm
 
 1. The central limit theorem shows that the sum of many independent random is approximately normal distribution. So many complicated systems can be modelled as normal distribution noise.
 2. Out of all possible probability distributions with same variance, normal distribution encodes maximum about of uncertainity and least amount of prior.
+
+Lastly, **multivariant normal distribution** is:
+
+$\mathcal{N}(x; \mu, \sum) = \sqrt{\displaystyle\frac{1}{(2\pi)^n det(\sum)}} exp\Bigg(-\frac{1}{2}(x - \mu)^T \sum^{-1} (x - \mu)\Bigg)$
+
+and to avoid computing inverse, using the parameter **precision matrix $\beta$**:
+
+$\mathcal{N}(x; \mu, \sum) = \sqrt{\displaystyle\frac{det(\beta)}{(2\pi)^n}} exp\Bigg(-\frac{1}{2}(x - \mu)^T \beta (x - \mu)\Bigg)$
 
 ##### Exponential and Laplace Distributions
 
@@ -180,6 +189,40 @@ $Laplace(x; \mu, \gamma) = \displaystyle \frac{1}{2 \gamma} exp\Bigg(-\frac{\mid
 
 ##### The Dirac Distribution and Empirical Distribution
 
+Dirac delta function is not a normal function that maps values of input to output but a generalized function that is defined in terms of its properties when integrated. It's a limiting case of a series of functions that put less and less mass on all points other than zero, giving us an infinitely narrow and high peak at $x=0$.
+
+This can be used to model distributions that are clustered around some point $\mu$ as:
+
+$p(x; \mu) = \delta(x - \mu)$
+
+Another common use of Dirac delta function is as a component of the empirical distribution:
+
+$p(\bold{x}; \mu) = \frac{1}{m} \displaystyle\sum_{i=1}^m \delta(\bold{x} - \bold{x}^{(i)})$
+
+Empirical Distribution can be viewed in two ways:
+
+1. As a distribution sampled from a dataset of training exaples.
+2. As probability density that maximizes the likelihood of training data. 
+
 #### Mixtures of Distribution
+
+Mixture distribution is used to create richer distributions with combining multiple distributions. 
+
+On each trial, the choice of which component distribution generates the sample is identified using a multinoulli distribution:
+
+$P(x) = \displaystyle\sum_{i}P(c = i)P(x \mid c = i)$
+
+where $P(c)$ is multinoulli distribution over component identities.
+
+Empirical Distribution is one example of a continuous mixture distribution: one Dirac delta component for each training example.
+
+Latent variable is a random variable that is not observed directly. The latent variable may be related to a random variable $x$ through a joint distribution. In case of mixture models, its $P(x, c) = P(c)P(x \mid c)$.
+
+Another powerful mixture distribution is gaussian mixture distribution where p(x | c = i) is a Gaussian. Each component has a mean $\mu^{(i)}$ and covariance $\bold{\sum}^{(i)}$. Some gaussian mixtures may have additional constraints like $\bold{\sum}^{(i)} = \bold{\sum},  \forall i$ or the covariance matrix may be diagonal or isotropic.
+
+Just like in $P(x \mid c)$ $c$ is seen prior to seeing $x$, P(c \mid x)$ is **posterior probability**, because it is computed after computing $x$.
+
+A Gaussian mixture model is a universal approximator i.e. any smooth distribution can be modelled with enough number of Gaussian mixture model with a non-zero error.
+
 
 Status: Work in Progress.
