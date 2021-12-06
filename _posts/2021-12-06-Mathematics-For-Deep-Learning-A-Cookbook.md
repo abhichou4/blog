@@ -148,7 +148,7 @@ It's a distribution over a single discrete variable with k different states, whe
 
 When dealing with continuous distributions, there are infinite states, so any distribution with small number of parameters must impose strict limits on the distribution.
 
-#### Gaussian Distribution
+##### Gaussian Distribution
 
 The most common distribution over real numbers is the gaussian distribution.
 
