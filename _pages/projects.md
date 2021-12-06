@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page 
 permalink: /projects/
 title: Projects
 search_exclude: true
