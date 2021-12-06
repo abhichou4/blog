@@ -166,9 +166,19 @@ In the absence of prior knowledge about distribution for a random variable, norm
 1. The central limit theorem shows that the sum of many independent random is approximately normal distribution. So many complicated systems can be modelled as normal distribution noise.
 2. Out of all possible probability distributions with same variance, normal distribution encodes maximum about of uncertainity and least amount of prior.
 
-#### Exponential and Laplace Distributions
+##### Exponential and Laplace Distributions
 
-#### The Dirac Distribution and Empirical Distribution
+Sometimes we need probability distributions that model a sharp point at $x = 0$. Exponential distribution is used in such cases:
+
+$p(x; \lambda) = \lambda \bold{1}_{x \geq 0}exp(-\lambda x)$
+
+Exponential distribution uses the condition \bold{1}_{x \geq 0} to zero out all values of distribution for negative values of $x$.
+
+Another distribution that puts sharp peak at an arbitrary point $\mu$ is Laplace Distribution:
+
+$Laplace(x; \mu, \gamma) = \displaystyle \frac{1}{2 \gamma} exp\Bigg(-\frac{|x - \mu|}{\gamma}\Bigg)$
+
+##### The Dirac Distribution and Empirical Distribution
 
 #### Mixtures of Distribution
 
