@@ -9,7 +9,7 @@ title: Mathematics for Deep Learning - A Cookbook
 This blog post serves as a quick review for the mathematics of my Deep Learning class.
 
 
-## Probability and Information Theory
+## Probability
 
 Probability can crudely be of two kinds:
 
@@ -218,7 +218,7 @@ Empirical Distribution is one example of a continuous mixture distribution: one 
 
 Latent variable is a random variable that is not observed directly. The latent variable may be related to a random variable $x$ through a joint distribution. In case of mixture models, its $P(x, c) = P(c)P(x \mid c)$.
 
-Another powerful mixture distribution is gaussian mixture distribution where $p(x \mid c = i)$ is a Gaussian. Each component has a mean $\mu^{(i)}$ and covariance $\bold{\sum}^{(i)}$. Some gaussian mixtures may have additional constraints like $\bold{\sum}^{(i)} = \bold{\sum},  \forall i$ or the covariance matrix may be diagonal or isotropic.
+Another powerful mixture distribution is gaussian mixture distribution where $p(x \mid c = i)$ is a Gaussian. Each component has a mean $\mu^{(i)}$ and covariance $\bold{\sum}^{(i)}$.
 
 Just like in $P(x \mid c)$ $c$ is seen prior to seeing $x$, P(c \mid x)$ is **posterior probability**, because it is computed after computing $x$.
 
@@ -226,11 +226,11 @@ A Gaussian mixture model is a universal approximator i.e. any smooth distributio
 
 ### Bayes Rule
 
-$P(x \mid y) = \displaystyle\frac{P(y | x) P(x)}{P(y)}$
+$P(x \mid y) = \displaystyle\frac{P(y \mid x) P(x)}{P(y)}$
 
 and 
 
-$P(y) = \sum_x P(y | x) P(x)$
+$P(y) = \sum_x P(y \mid x) P(x)$
 
 ### Some common function and their properties
 
@@ -260,6 +260,12 @@ It is a smoother version of $max{0, x}$. Often used to compute $\sum$ and $\beta
 * $\zeta(x) - \zeta(-x) = x$
 
 The last property further reinforces $\zeta(x)$ is analogous to $x^+ = max{0, x}$ as $x^+ - x^- = x$ too.
+
+#### Note about continuous variables
+
+## Information Theory
+
+
 
 
 Status: Work in Progress.
