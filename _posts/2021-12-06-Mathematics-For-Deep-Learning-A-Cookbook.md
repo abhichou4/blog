@@ -218,7 +218,7 @@ Empirical Distribution is one example of a continuous mixture distribution: one 
 
 Latent variable is a random variable that is not observed directly. The latent variable may be related to a random variable $x$ through a joint distribution. In case of mixture models, its $P(x, c) = P(c)P(x \mid c)$.
 
-Another powerful mixture distribution is gaussian mixture distribution where p(x | c = i) is a Gaussian. Each component has a mean $\mu^{(i)}$ and covariance $\bold{\sum}^{(i)}$. Some gaussian mixtures may have additional constraints like $\bold{\sum}^{(i)} = \bold{\sum},  \forall i$ or the covariance matrix may be diagonal or isotropic.
+Another powerful mixture distribution is gaussian mixture distribution where $p(x \mid c = i)$ is a Gaussian. Each component has a mean $\mu^{(i)}$ and covariance $\bold{\sum}^{(i)}$. Some gaussian mixtures may have additional constraints like $\bold{\sum}^{(i)} = \bold{\sum},  \forall i$ or the covariance matrix may be diagonal or isotropic.
 
 Just like in $P(x \mid c)$ $c$ is seen prior to seeing $x$, P(c \mid x)$ is **posterior probability**, because it is computed after computing $x$.
 
