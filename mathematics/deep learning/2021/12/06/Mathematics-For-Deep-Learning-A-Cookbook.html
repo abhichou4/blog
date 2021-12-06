@@ -113,7 +113,7 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#probability-and-information-theory">Probability and Information Theory</a>
+<li class="toc-entry toc-h2"><a href="#probability">Probability</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#random-variables">Random Variables</a></li>
 <li class="toc-entry toc-h3"><a href="#probability-mass-functions-pmf">Probability Mass Functions (PMF)</a></li>
@@ -151,14 +151,16 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h4"><a href="#logistic-sigmoid">logistic sigmoid</a></li>
 <li class="toc-entry toc-h4"><a href="#softplus">Softplus</a></li>
 <li class="toc-entry toc-h4"><a href="#properties">Properties</a></li>
+<li class="toc-entry toc-h4"><a href="#note-about-continuous-variables">Note about continuous variables</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#information-theory">Information Theory</a></li>
 </ul><p>This blog post serves as a quick review for the mathematics of my Deep Learning class.</p>
 
-<h2 id="probability-and-information-theory">
-<a class="anchor" href="#probability-and-information-theory" aria-hidden="true"><span class="octicon octicon-link"></span></a>Probability and Information Theory</h2>
+<h2 id="probability">
+<a class="anchor" href="#probability" aria-hidden="true"><span class="octicon octicon-link"></span></a>Probability</h2>
 
 <p>Probability can crudely be of two kinds:</p>
 
@@ -398,7 +400,7 @@ $Var(x) = \phi(1 - \phi)$</p>
 
 <p>Latent variable is a random variable that is not observed directly. The latent variable may be related to a random variable $x$ through a joint distribution. In case of mixture models, its $P(x, c) = P(c)P(x \mid c)$.</p>
 
-<p>Another powerful mixture distribution is gaussian mixture distribution where $p(x \mid c = i)$ is a Gaussian. Each component has a mean $\mu^{(i)}$ and covariance $\bold{\sum}^{(i)}$. Some gaussian mixtures may have additional constraints like $\bold{\sum}^{(i)} = \bold{\sum},  \forall i$ or the covariance matrix may be diagonal or isotropic.</p>
+<p>Another powerful mixture distribution is gaussian mixture distribution where $p(x \mid c = i)$ is a Gaussian. Each component has a mean $\mu^{(i)}$ and covariance $\bold{\sum}^{(i)}$.</p>
 
 <p>Just like in $P(x \mid c)$ $c$ is seen prior to seeing $x$, P(c \mid x)$ is <strong>posterior probability</strong>, because it is computed after computing $x$.</p>
 
@@ -407,25 +409,11 @@ $Var(x) = \phi(1 - \phi)$</p>
 <h3 id="bayes-rule">
 <a class="anchor" href="#bayes-rule" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bayes Rule</h3>
 
-<table>
-  <tbody>
-    <tr>
-      <td>$P(x \mid y) = \displaystyle\frac{P(y</td>
-      <td>x) P(x)}{P(y)}$</td>
-    </tr>
-  </tbody>
-</table>
+<p>$P(x \mid y) = \displaystyle\frac{P(y \mid x) P(x)}{P(y)}$</p>
 
 <p>and</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>$P(y) = \sum_x P(y</td>
-      <td>x) P(x)$</td>
-    </tr>
-  </tbody>
-</table>
+<p>$P(y) = \sum_x P(y \mid x) P(x)$</p>
 
 <h3 id="some-common-function-and-their-properties">
 <a class="anchor" href="#some-common-function-and-their-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Some common function and their properties</h3>
@@ -461,6 +449,12 @@ $Var(x) = \phi(1 - \phi)$</p>
 </ul>
 
 <p>The last property further reinforces $\zeta(x)$ is analogous to $x^+ = max{0, x}$ as $x^+ - x^- = x$ too.</p>
+
+<h4 id="note-about-continuous-variables">
+<a class="anchor" href="#note-about-continuous-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Note about continuous variables</h4>
+
+<h2 id="information-theory">
+<a class="anchor" href="#information-theory" aria-hidden="true"><span class="octicon octicon-link"></span></a>Information Theory</h2>
 
 <p>Status: Work in Progress.</p>
 
