@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://abhichou4.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhichou4.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-12-05T16:59:47-06:00</updated><id>https://abhichou4.github.io/blog/feed.xml</id><title type="html">Abhineet’s Blog</title><subtitle>NoobMaster</subtitle><entry><title type="html">Mathematics for Deep Learning - A Cookbook</title><link href="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html" rel="alternate" type="text/html" title="Mathematics for Deep Learning - A Cookbook" /><published>2021-12-06T00:00:00-06:00</published><updated>2021-12-06T00:00:00-06:00</updated><id>https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook</id><content type="html" xml:base="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html">&lt;p&gt;This blog post serves as a quick review for the mathematics of my Deep Learning class.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://abhichou4.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://abhichou4.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-12-05T18:22:20-06:00</updated><id>https://abhichou4.github.io/blog/feed.xml</id><title type="html">Abhineet’s Blog</title><subtitle>NoobMaster</subtitle><entry><title type="html">Mathematics for Deep Learning - A Cookbook</title><link href="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html" rel="alternate" type="text/html" title="Mathematics for Deep Learning - A Cookbook" /><published>2021-12-06T00:00:00-06:00</published><updated>2021-12-06T00:00:00-06:00</updated><id>https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook</id><content type="html" xml:base="https://abhichou4.github.io/blog/mathematics/deep%20learning/2021/12/06/Mathematics-For-Deep-Learning-A-Cookbook.html">&lt;p&gt;This blog post serves as a quick review for the mathematics of my Deep Learning class.&lt;/p&gt;
 
 &lt;h2 id=&quot;probability&quot;&gt;Probability&lt;/h2&gt;
 
@@ -122,7 +122,59 @@
 
 &lt;p&gt;and diagonal elements of the covariance matrix give the variance:&lt;/p&gt;
 
-&lt;p&gt;$diag(Cov(x)) = Var(x)$&lt;/p&gt;</content><author><name></name></author><category term="Mathematics" /><category term="Deep Learning" /><summary type="html">This blog post serves as a quick review for the mathematics of my Deep Learning class.</summary></entry><entry><title type="html">Process Synchronization</title><link href="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html" rel="alternate" type="text/html" title="Process Synchronization" /><published>2021-08-06T00:00:00-05:00</published><updated>2021-08-06T00:00:00-05:00</updated><id>https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS</id><content type="html" xml:base="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html">&lt;h3 id=&quot;the-critical-section-problem&quot;&gt;The Critical Section Problem&lt;/h3&gt;
+&lt;p&gt;$diag(Cov(x)) = Var(x)$&lt;/p&gt;
+
+&lt;h3 id=&quot;common-probability-distributions&quot;&gt;Common Probability Distributions&lt;/h3&gt;
+
+&lt;h4 id=&quot;discrete-probability-distribution&quot;&gt;Discrete Probability Distribution&lt;/h4&gt;
+
+&lt;p&gt;Bernoulli and Multinoulli distributions are enough to describe any discrete distribution over their domain, since the domain is very simple.&lt;/p&gt;
+
+&lt;h5 id=&quot;bernoulli-distribution&quot;&gt;Bernoulli Distribution&lt;/h5&gt;
+
+&lt;p&gt;It’s a distribution over a single binary variable. It’s main parameter is $\phi \in [0, 1]$.&lt;/p&gt;
+
+&lt;p&gt;$P(x = 1) = \phi$ &lt;br /&gt;
+$P(x = 0) = 1 - \phi$ &lt;br /&gt;
+$x \in [0, 1], P(\bold{x} = x) = \phi ^ x (1 - \phi) ^ {1 -x}$ &lt;br /&gt;
+$E[x] = \phi$ &lt;br /&gt;
+$Var(x) = \phi(1 - \phi)$ \&lt;/p&gt;
+
+&lt;h5 id=&quot;multinoulli-distribution&quot;&gt;Multinoulli Distribution&lt;/h5&gt;
+
+&lt;p&gt;It’s a distribution over a single discrete variable with k different states, where k is finite. It is parameterize by a vector $\bold{p} \in [0, 1] ^ k -1$, where $p_i$ is the probability of $ith$ state. The $kth$ state probability is $1 - \bold{1}^T \bold{p}$. Therefore, $\bold{1}^T \bold{p} \leq 1$. Since the probabilities aren’t defined, expectation and variance are not calculated for this distribution.&lt;/p&gt;
+
+&lt;h4 id=&quot;continuous-probability-distributions&quot;&gt;Continuous Probability Distributions&lt;/h4&gt;
+
+&lt;p&gt;When dealing with continuous distributions, there are infinite states, so any distribution with small number of parameters must impose strict limits on the distribution.&lt;/p&gt;
+
+&lt;h4 id=&quot;gaussian-distribution&quot;&gt;Gaussian Distribution&lt;/h4&gt;
+
+&lt;p&gt;The most common distribution over real numbers is the gaussian distribution.&lt;/p&gt;
+
+&lt;p&gt;$\mathcal{N}(x; \mu, \sigma^2) = \sqrt{\displaystyle\frac{1}{2 \pi \sigma^2}} \Bigg(\displaystyle\frac{-1}{2 \sigma^2} (x - \mu)^2\Bigg)$&lt;/p&gt;
+
+&lt;p&gt;Where $\mu$ is the mean and $\sigma^2$ is the standard deviation for the distribution. 
+An even better way to parameterize the normal distribution is using precision or inverse variance $\beta$:&lt;/p&gt;
+
+&lt;p&gt;$\mathcal{N}(x; \mu, \beta^-1) = \sqrt{\displaystyle\frac{\beta}{2 \pi}} \Bigg(\displaystyle\frac{-\beta}{2} (x - \mu)^2\Bigg)$&lt;/p&gt;
+
+&lt;p&gt;Standard normal distribution is with $\mu = 0$ and $\sigma = 1$&lt;/p&gt;
+
+&lt;p&gt;In the absence of prior knowledge about distribution for a random variable, normal distribution is a good choice for two main reasons:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The central limit theorem shows that the sum of many independent random is approximately normal distribution. So many complicated systems can be modelled as normal distribution noise.&lt;/li&gt;
+  &lt;li&gt;Out of all possible probability distributions with same variance, normal distribution encodes maximum about of uncertainity and least amount of prior.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;exponential-and-laplace-distributions&quot;&gt;Exponential and Laplace Distributions&lt;/h4&gt;
+
+&lt;h4 id=&quot;the-dirac-distribution-and-empirical-distribution&quot;&gt;The Dirac Distribution and Empirical Distribution&lt;/h4&gt;
+
+&lt;h4 id=&quot;mixtures-of-distribution&quot;&gt;Mixtures of Distribution&lt;/h4&gt;
+
+&lt;p&gt;Status: Work in Progress.&lt;/p&gt;</content><author><name></name></author><category term="Mathematics" /><category term="Deep Learning" /><summary type="html">This blog post serves as a quick review for the mathematics of my Deep Learning class.</summary></entry><entry><title type="html">Process Synchronization</title><link href="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html" rel="alternate" type="text/html" title="Process Synchronization" /><published>2021-08-06T00:00:00-05:00</published><updated>2021-08-06T00:00:00-05:00</updated><id>https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS</id><content type="html" xml:base="https://abhichou4.github.io/blog/operating%20systems/2021/08/06/Process-Synchronization-In-DS.html">&lt;h3 id=&quot;the-critical-section-problem&quot;&gt;The Critical Section Problem&lt;/h3&gt;
 
 &lt;p&gt;The critical section contain variables shared among different processes. The values of these may change
 depending on the order in which in is accessed by various processes. This can result in corruption of data. Thus, only one process should
