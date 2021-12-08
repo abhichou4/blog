@@ -5,9 +5,9 @@ title: Projects
 search_exclude: true
 ---
 
-# Robotics Projects 
+## Robotics Projects 
 
-## Eve: A self-driving car
+### Eve: A self-driving car
 
 <img src="https://media.githubusercontent.com/media/abhichou4/blog/master/images/eve.gif" />
 
@@ -18,7 +18,7 @@ I worked on object-detection and tracking, and lane-detection modules of the car
 [Link to project website.](https://projectmanas.in/)
 [Object detection repository.](https://gitlab.com/abhineet99/object-detection/-/tree/master/)
 
-## Solo: An autonomous ground vehicle
+### Solo: An autonomous ground vehicle
 
 <img src="https://media.githubusercontent.com/media/abhichou4/blog/master/images/solo-championship.jpg" width="60%" style="margin: 15px;" />
 
@@ -28,7 +28,7 @@ I worked on helping it avoid potholes and mapping model detection to ground fram
 
 [Pothole detection repository.](https://gitlab.com/abhineet99/pothole_detection/-/tree/devel)
 
-## Fuse My Senses: Odometry estimation
+### Fuse My Senses: Odometry estimation
 
 Odometry data is an important source of information to let an autonomous robot find it’s
 location in its environment. A multitude of sensors are often used to enable a robot
@@ -39,9 +39,9 @@ kalman filter to combine there sources to give near accurate odometry, visualize
 
 **Note: Code for this was sadly lost.**
 
-# Open-source Projects 
+## Open-source Projects 
 
-## Tensorflow
+### Tensorflow
 
 TensorFlow is a free and open-source software library for machine learning and artificial intelligence. It can be used across a range of tasks but has a particular focus on training and inference of deep neural networks.
 
@@ -49,13 +49,13 @@ As part of Google Summer of Code 2020, I helped build batching into forward-mode
 
 [Link to the project.](https://gist.github.com/abhichou4/449286bf1cec8dea9f2ac5735c6f3826)
 
-## NoobAutograd
+### NoobAutograd
 
 I toy-implementation for both forward-mode and backward mode automatic differentiation. It can successfully compute numerical gradients for scalar operations.
 
 [Link to the project.](https://github.com/abhichou4/NoobAutograd)
 
-## Swift for Tensorflow Benchmarks
+### Swift for Tensorflow Benchmarks
 
 Python is not the future of machine learning. It's slow, GIL forces using external C for concurrency, and accelerators force things into CUDA code. Building machine learning frameworks in python basically require writing a lot of code in another launguge (like C++) and giving it a python API.
 
