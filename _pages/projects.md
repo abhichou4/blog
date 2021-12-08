@@ -5,7 +5,7 @@ title: Projects
 search_exclude: true
 ---
 
-# <u> Robotics Projects </u>
+# Robotics Projects 
 
 ## Eve: A self-driving car
 
@@ -39,7 +39,7 @@ kalman filter to combine there sources to give near accurate odometry, visualize
 
 **Note: Code for this was sadly lost.**
 
-# <u> Open-source Projects </u>
+# Open-source Projects 
 
 ## Tensorflow
 
