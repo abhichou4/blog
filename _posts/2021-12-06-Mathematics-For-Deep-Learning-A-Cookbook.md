@@ -26,7 +26,7 @@ They can be continuous or discrete. Set of states in denoted by $\bold{x}$ and i
 
 ### Probability Mass Functions (PMF)
 
-Probability Mass Function (PMF) maps the discrete state of the random variable to it's probability. It's usually denoted as $P(\bold{x}$.
+Probability Mass Function (PMF) maps the discrete state of the random variable to it's probability. It's usually denoted as $P(\bold{x})$.
 
 There are there conditions for a PMF must satisfy:
 
