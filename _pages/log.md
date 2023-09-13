@@ -1,5 +1,5 @@
 ---
-layout: log 
+layout: page 
 permalink: /log/
 title: Neet Log
 search_exclude: true
